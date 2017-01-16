@@ -1,15 +1,12 @@
 $(function(){
-
-    var todoList = '';
-    var todo = '';
     var flag = true;
 
     $('#edit').click(function(){
 
-        $('#errorMessege').html('');
+        $('#errorMessege').text('');
 
         if($('#todoText').val() == ''){
-            $('#errorMessege').html('入力してください');
+            $('#errorMessege').text('入力してください');
             return;
         }
 
@@ -18,17 +15,16 @@ $(function(){
             flag = false;
         }
         
-        todo = '<li>'+ $('#todoText').val() + '</li>';
-        todoList = todoList + todo;
+        var li = $('<li>').text($('#todoText').val());
+        li.appendTo($('ul'));
 
-        $('ul').html(todoList);
         $('#todoText').val('');
     })
 
     $('#delete').click(function(){
-        $('#errorMessege').html('');
+        $('#errorMessege').text('');
         $('#todoList').html('');
+        $('#todoText').val('');
         flag = true;
-        todoList = '';
     })
 });
