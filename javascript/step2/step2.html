@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>JSトレーニングステップ2 【登録した単語/意味の出力】</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="step2.js"></script>
+    <link rel="stylesheet" type="text/css" href="step.css">
+</head>
+<body>
+    <div>
+        単語<input type="text" size="10" id="js-word">
+        意味<input type="text" size="20" id="js-meaning">
+        <input type="button" value="単語を登録" id="js-add">
+    </div>
+    
+    <div style="margin-top: 50px;">
+        <input type="button" value="単語一覧" id="js-showWordList">
+    </div>
+
+    <div id="js-wordBookListGroup" style="margin-top: 30px;">
+        <table id="js-wordBookListTable" width="300px">
+            <thead><tr><th>単語</th><th>意味</th></tr></thead>
+            <tbody></tbody>
+        </table>
+        <input type="button" value="閉じる" id="js-closeWordList" style="margin-top: 30px;">
+    </div>
+</body>
+</html>
