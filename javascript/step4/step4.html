@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>JSトレーニングステップ3 【問題(単語と意味)の出力】 </title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="step4.js"></script>
+    <link rel="stylesheet" type="text/css" href="step.css">
+</head>
+<body>
+    <div align="center">
+        <p id="js-wordCard"></p>
+        <p id="js-meaningCard"></p>
+        <input type="button" value="答えを見る" id="js-answer">
+    </div>
+
+    <div class="js-addGroup" style="margin-top: 50px;">
+        単語<input type="text" size="10" id="js-word">
+        意味<input type="text" size="20" id="js-meaning">
+        <input type="button" value="単語を登録" id="js-add">
+    </div>
+    
+    <div style="margin-top: 50px;">
+        <input type="button" value="単語一覧" id="js-showWordList">
+    </div>
+
+    <div id="js-wordBookListGroup" style="margin-top: 30px;">
+        <div id="js-wordBookList">
+        </div>
+        <input type="button" value="閉じる" id="js-closeWordList" style="margin-top: 30px;">
+    </div>
+</body>
+</html>
