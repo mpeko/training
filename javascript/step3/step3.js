@@ -5,7 +5,7 @@ JSトレーニングステップ3 【問題(単語と意味)の出力】
 $(function(){
     
     var wordBookList = [];
-    $('#js-wordBookListGroup').hide();
+    $('#js-wordBookListGroup').addClass('hide');
 
     // 単語を追加
     $('#js-add').click(function(){
@@ -14,7 +14,7 @@ $(function(){
         for (var i = 0; i < wordBookList.length; i++) {
             if (i == (wordBookList.length-1)) {
                 $('#js-wordCard').text(wordBookList[i].word);
-                $('#js-meaningCard').text(wordBookList[i].meaning).hide();
+                $('#js-meaningCard').text(wordBookList[i].meaning).addClass('hide');
             }
         }
     })
@@ -22,27 +22,26 @@ $(function(){
     // 単語一覧を表示
     $('#js-showWordList').click(function(){
 
-        $('table#js-wordBookListTable tbody *').remove();
-        $('#js-wordBookListGroup').show();
+        $('#js-wordBookList ul *').remove();
+        $('#js-wordBookListGroup').removeClass('hide');
 
         for (var i = 0; i < wordBookList.length; i++) {
-            $('#js-wordBookListTable > tbody').append(
-                $('<tr>').append(
-                    $('<td>').append(wordBookList[i].word),
-                    $('<td>').append(wordBookList[i].meaning)
-                )
-            );
+
+            var li = document.createElement('li'); 
+            li.innerHTML = wordBookList[i].word +' : '+ wordBookList[i].meaning ; 
+            var ul = document.getElementsByTagName("ul").item(0); 
+            ul.appendChild(li);
         }
     })
 
     // 単語一覧を閉じる
     $('#js-closeWordList').click(function(){
-        $('#js-wordBookListGroup').hide();
+        $('#js-wordBookListGroup').addClass('hide');
     })
 
     // 答えを見る
     $('#js-answer').click(function(){
-        $('#js-wordBookListGroup').hide();
-        $('#js-meaningCard').show();
+        $('#js-wordBookListGroup').addClass('hide');
+        $('#js-meaningCard').removeClass('hide');
     })
 });
