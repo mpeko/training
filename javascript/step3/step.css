@@ -2,6 +2,6 @@
   display: none;
 }
 
-.wordBook {
+#js-wordBookList ul {
   list-style-type: none;
 }

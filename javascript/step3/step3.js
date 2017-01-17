@@ -13,7 +13,7 @@ $(function(){
 
         var word = '';
         var meaning = '';
-        
+
         for (var i = 0; i < wordBookList.length; i++) {
             if (i == (wordBookList.length-1)) {
                 word = wordBookList[i].word;
@@ -28,16 +28,16 @@ $(function(){
     // 単語一覧を表示
     $('#js-showWordList').click(function(){
 
-        $('#js-wordBookList ul *').remove();
+        $('#js-wordBookList ul').remove();
         $('#js-wordBookListGroup').removeClass('hide');
 
+        var word_list = '<ul>';
         for (var i = 0; i < wordBookList.length; i++) {
-
-            var li = document.createElement('li'); 
-            li.innerHTML = wordBookList[i].word +' : '+ wordBookList[i].meaning ; 
-            var ul = document.getElementsByTagName("ul").item(0); 
-            ul.appendChild(li);
+            word_list += "<li>"+wordBookList[i].word +' : '+ wordBookList[i].meaning+"</li>"
         }
+
+        word_list += '</ul>';
+        $("#js-wordBookList").append(word_list);
     })
 
     // 単語一覧を閉じる
