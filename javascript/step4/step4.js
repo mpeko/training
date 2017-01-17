@@ -62,11 +62,11 @@ $(function(){
         $('.js-errorMsg').remove();
 
         if($('#js-word').val() == ''){
-            errorMsg = '単語を入力してください。';
+            errorMsg += '単語を入力してください。';
         }
 
         if($('#js-meaning').val() == ''){
-            errorMsg = errorMsg +'意味を入力してください。';
+            errorMsg += '意味を入力してください。';
         }
 
         if(errorMsg) {
