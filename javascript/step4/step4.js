@@ -27,6 +27,9 @@ $(function(){
 
         $('#js-wordCard').text(word);
         $('#js-meaningCard').text(meaning).addClass('hide');
+
+        $('#js-word').val('');
+        $('#js-meaning').val('');
     })
 
     // 単語一覧を表示
