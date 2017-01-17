@@ -11,12 +11,18 @@ $(function(){
     $('#js-add').click(function(){
         wordBookList.push({ word: $('#js-word').val(), meaning: $('#js-meaning').val()});
 
+        var word = '';
+        var meaning = '';
+        
         for (var i = 0; i < wordBookList.length; i++) {
             if (i == (wordBookList.length-1)) {
-                $('#js-wordCard').text(wordBookList[i].word);
-                $('#js-meaningCard').text(wordBookList[i].meaning).addClass('hide');
+                word = wordBookList[i].word;
+                meaning = wordBookList[i].meaning;
             }
         }
+
+        $('#js-wordCard').text(word);
+        $('#js-meaningCard').text(meaning).addClass('hide');
     })
 
     // 単語一覧を表示
