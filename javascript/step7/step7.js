@@ -30,7 +30,7 @@ $(function(){
         $('.js-word').val('');
         $('.js-meaning').val('');
 
-        chengeQuestionBtn();
+        changeQuestionBtn();
 
         $('.questionGroup').removeClass('hide');
     })
@@ -85,25 +85,25 @@ $(function(){
     // 戻る
     $('.js-prevBtn').click(function(){
         showQuestionIndex -= 1; 
-        chengeQuestion();
-        chengeQuestionBtn();
+        changeQuestion();
+        changeQuestionBtn();
     });
 
     // 進む
     $('.js-nextBtn').click(function(){
         showQuestionIndex += 1; 
-        chengeQuestion();
-        chengeQuestionBtn();
+        changeQuestion();
+        changeQuestionBtn();
     });
 
     // 問題の切り替え
-    function chengeQuestion(){
+    function changeQuestion(){
         $('.js-wordCard').text(wordBookList[showQuestionIndex].word);
         $('.js-meaningCard').text(wordBookList[showQuestionIndex].meaning);
     }
 
     // 戻る/進む ボタンの切り替え
-    function chengeQuestionBtn(){
+    function changeQuestionBtn(){
         (showQuestionIndex == 0) ? $('.js-prevBtn').addClass('hide') : $('.js-prevBtn').removeClass('hide');
         (showQuestionIndex == wordBookList.length-1) ? $('.js-nextBtn').addClass('hide') : $('.js-nextBtn').removeClass('hide');
     }
