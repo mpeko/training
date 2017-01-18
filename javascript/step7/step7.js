@@ -12,8 +12,6 @@ $(function(){
     $('.js-wordBookListGroup').addClass('hide');
     $('.questionGroup').addClass('hide');
 
-
-
     // 単語を追加
     $('.js-addBtn').click(function(){
 
@@ -32,7 +30,7 @@ $(function(){
         $('.js-word').val('');
         $('.js-meaning').val('');
 
-        checkQuestionBtn();
+        chengeQuestionBtn();
 
         $('.questionGroup').removeClass('hide');
     })
@@ -51,6 +49,7 @@ $(function(){
         });
         word_list += '</ul>';
         $(".js-wordBookList").append(word_list);
+    });
 
     // 単語編集
     $('.js-wordBookList').on('click', 'input' ,function() {
@@ -87,14 +86,14 @@ $(function(){
     $('.js-prevBtn').click(function(){
         showQuestionIndex -= 1; 
         chengeQuestion();
-        checkQuestionBtn();
+        chengeQuestionBtn();
     });
 
     // 進む
     $('.js-nextBtn').click(function(){
         showQuestionIndex += 1; 
         chengeQuestion();
-        checkQuestionBtn();
+        chengeQuestionBtn();
     });
 
     // 問題の切り替え
@@ -104,7 +103,7 @@ $(function(){
     }
 
     // 戻る/進む ボタンの切り替え
-    function checkQuestionBtn(){
+    function chengeQuestionBtn(){
         (showQuestionIndex == 0) ? $('.js-prevBtn').addClass('hide') : $('.js-prevBtn').removeClass('hide');
         (showQuestionIndex == wordBookList.length-1) ? $('.js-nextBtn').addClass('hide') : $('.js-nextBtn').removeClass('hide');
     }
