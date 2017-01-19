@@ -110,8 +110,16 @@ $(function(){
 
     // 戻る/進む ボタンの切り替え
     function checkQuestionBtn(){
-        (showQuestionIndex == 0) ? $('.js-prevBtn').addClass('hide') : $('.js-prevBtn').removeClass('hide');
-        (showQuestionIndex == wordBookList.length-1) ? $('.js-nextBtn').addClass('hide') : $('.js-nextBtn').removeClass('hide');
+        if(showQuestionIndex == 0) {
+            $('.js-prevBtn').addClass('hide');
+        } else {
+            $('.js-prevBtn').removeClass('hide');
+        }
+        if(showQuestionIndex == wordBookList.length-1) {
+            $('.js-nextBtn').addClass('hide');
+        } else {
+            $('.js-nextBtn').removeClass('hide');
+        }
     }
 
     // バリデーション
