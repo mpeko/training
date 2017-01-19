@@ -18,15 +18,8 @@ $(function(){
 
         wordBookList.push({ word: $('#js-word').val(), meaning: $('#js-meaning').val()});
 
-        var word = '';
-        var meaning = '';
-
-        for (var i = 0; i < wordBookList.length; i++) {
-            if (i == (wordBookList.length-1)) {
-                word = wordBookList[i].word;
-                meaning = wordBookList[i].meaning;
-            }
-        }
+        var word = wordBookList[wordBookList.length-1].word;
+        var meaning = wordBookList[wordBookList.length-1].meaning;
 
         $('#js-wordCard').text(word);
         $('#js-meaningCard').text(meaning).addClass('hide');
@@ -41,22 +34,21 @@ $(function(){
         $('#js-wordBookList ul').remove();
         $('#js-wordBookListGroup').removeClass('hide');
 
-        var word_list = '<ul>';
+        var wordList = '<ul>';
         for (var i = 0; i < wordBookList.length; i++) {
-            word_list += "<li>"+wordBookList[i].word +' : '+ wordBookList[i].meaning + editBtn +"</li>"
+            wordList += "<li>"+wordBookList[i].word +' : '+ wordBookList[i].meaning + editBtn +"</li>"
         }
 
-        word_list += '</ul>';
-        $("#js-wordBookList").append(word_list);
+        wordList += '</ul>';
+        $elm = $(wordList).appendTo("#js-wordBookList");
+
+        // 単語編集
+        $elm.find('input').click(function() {
+            rewordIndex = $('.js-editBtn').index(this);
+            $('.js-reword').val(wordBookList[rewordIndex].word);
+            $('.js-reneaning').val(wordBookList[rewordIndex].meaning);
+        });
     })
-
-    // 単語編集
-    $('#js-wordBookList').on('click', 'input' ,function() {
-        rewordIndex = $('.js-editBtn').index(this);
-
-        $('.js-reword').val(wordBookList[rewordIndex].word);
-        $('.js-reneaning').val(wordBookList[rewordIndex].meaning);
-    });
 
     // 単語更新
     $('.js-renewalBtn').click(function(){
