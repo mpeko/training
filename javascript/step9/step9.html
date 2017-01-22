@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>JSトレーニング9 オブジェクトを使用したリファクタリング</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="underscore-min.js"></script>
+    <script type="text/javascript" src="step9.js"></script>
+    <link rel="stylesheet" type="text/css" href="step.css">
+</head>
+<body>
+    <div class="questionGroup" align="center">
+        <div>
+            <p class="js-wordCard"></p>
+            <p class="js-meaningCard"></p>
+        </div>
+        <div style="margin: 50px;">
+            <input type="button" value="<戻る" class="js-prevBtn">
+            <input type="button" value="進む>" class="js-nextBtn">
+        </div>
+        <input type="button" value="答えを見る" class="js-answerBtn">
+    </div>
+
+    <div class="js-addGroup" style="margin-top: 50px;">
+        単語<input type="text" size="10" class="js-word">
+        意味<input type="text" size="20" class="js-meaning">
+        <input type="button" value="単語を登録" class="js-addBtn">
+    </div>
+    
+    <div style="margin-top: 50px;">
+        <input type="button" value="単語一覧" class="js-wordListBtn">
+    </div>
+
+    <div class="js-wordBookListGroup" style="margin-top: 30px;">
+        <div>
+            単語<input type="text" size="10" class="js-updateWord">
+            意味<input type="text" size="20" class="js-updateMeaning">
+            <input type="button" value="更新" class="js-updateBtn">
+        </div>
+        <div class="js-wordBookList wordBookList"></div>
+        <input type="button" value="閉じる" class="js-closeWordListBtn" style="margin-top: 30px;">
+    </div>
+</body>
+</html>
