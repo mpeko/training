@@ -14,8 +14,6 @@ $(function(){
             this.setQuestionIndex(this.wordBookList.length - 1);
             var word = this.wordBookList[this.getQuestionIndex()].word;
             var meaning = this.wordBookList[this.getQuestionIndex()].meaning;
-            var arr = [word, meaning];
-            return arr;
         },
         // 編集する単語のindex
         editIndex: function(index){
@@ -42,15 +40,16 @@ $(function(){
 
     // 単語を追加
     $('.js-addBtn').click(function(){
+
         var check = validation();
         if (!check) return;
 
         var word = $('.js-word').val();
         var meaing = $('.js-meaning').val();
-        var wordArr = wordBookObj.add(word, meaing);
+        wordBookObj.add(word, meaing);
  
-        $('.js-wordCard').text(wordArr[0]);
-        $('.js-meaningCard').text(wordArr[1]).addClass('hide');
+        $('.js-wordCard').text(word);
+        $('.js-meaningCard').text(meaing).addClass('hide');
 
         $('.js-word').val('');
         $('.js-meaning').val('');
