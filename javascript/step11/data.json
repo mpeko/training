@@ -1,7 +1,5 @@
 [{
     "wordlist": [
-        { "word": "apple", "meaning": "りんご" },
-        { "word": "grape", "meaning": "ぶどう" },
-        { "word": "peach", "meaning": "もも" }
+        { "word": "apple", "meaning": "りんご" }
     ]
 }]
