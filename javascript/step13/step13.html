@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <title>JSトレーニング13 【単語帳の複数登録を行える様にする】 </title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="step13.js"></script>
+    <!--<script type="text/javascript" src="step13.js"></script>-->
+    <script type="text/javascript" src="obj.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <link rel="stylesheet" type="text/css" href="step.css">
 </head>
 <body>
 
     <!-- 問題 --> 
-    <div align="center">
-        <div>
+    <div class="js-questions" align="center">
+        <div class="js-cards">
             <p class="js-wordCard"></p>
             <p class="js-meaningCard"></p>
         </div>
-        <div class="questionBtnGroup" style="margin: 50px;">
+        <div class="js-questionBtnGroup" style="margin: 50px;">
             <input type="button" value="<戻る" class="js-prevBtn">
             <input type="button" value="進む>" class="js-nextBtn">
         </div>
@@ -23,30 +25,30 @@
     </div>
 
 
-     <!-- 単語帳一覧ボタン --> 
-    <div class="js-wordBookListBtn" style="margin-top: 50px;">
+    <!-- 単語帳一覧ボタン --> 
+    <div class="js-wordBooksBtn" style="margin-top: 50px;">
         <input type="button" value="単語帳一覧">
     </div>
 
 
     <!-- 単語帳一覧 --> 
-    <div class="js-wordBookListGroup" style="margin-top: 50px; background-color: #ccc;">
+    <div class="js-wordBooks" style="margin-top: 50px; background-color: #ccc;">
 
-        <p>単語帳一覧</p>
+        <p>単語帳一覧1</p>
 
-        <p class="js-wordBookList wordBookList">
+        <p class="js-list">
             <!--<ul>
                 <li>aaa<input type="button" value="名前" class="js-bookNameEditBtn"><input type="button" value="編集" class="js-wordEditBtn"></li>
             </ul>-->
         </p>
 
         <div class="js-update">
-            単語帳名 編集<input type="text" size="10" class="js-updateName">
-            <input type="button" value="更新">
+            単語帳名 編集<input type="text" size="10" class="js-updateNameTxt">
+            <input type="button" value="更新" class="js-updateBtn">
         </div>
 
         <p class="js-addGroup">
-            単語帳名<input type="text" size="10" class="js-wordListName">
+            単語帳名<input type="text" size="10" class="js-bookNameTxt">
             <input type="button" value="単語帳を登録" class="js-addBtn">
         </p>
 
@@ -58,25 +60,25 @@
 
 
     <!-- 単語一覧 -->
-    <div class="js-wordListGroup" style="margin-top: 50px; background-color: #666;">
+    <div class="js-wordBook" style="margin-top: 50px; background-color: #666;">
 
         <p class="js-bookName"></p>
 
-        <p class="js-wordList wordList">
+        <p class="js-list"> <!--　t-->
             <!--<ul>
                 <li>aaa<input type="button" value="編集" class="js-wordEditBtn"></li>
             </ul>-->
         </p>
 
         <div class="js-update">
-            単語<input type="text" size="10" class="js-updateWord">
-            意味<input type="text" size="20" class="js-updateMeaning">
+            単語<input type="text" size="10" class="js-updateWordTxt">
+            意味<input type="text" size="20" class="js-updateMeaningTxt">
             <input type="button" value="更新" class="js-updateBtn">
         </div>
 
         <div class="js-addGroup" style="margin-top: 50px;">
-            単語<input type="text" size="10" class="js-word">
-            意味<input type="text" size="20" class="js-meaning">
+            単語<input type="text" size="10" class="js-wordTxt">
+            意味<input type="text" size="20" class="js-meaningTxt">
             <input type="button" value="単語を登録" class="js-addBtn">
         </div>
 

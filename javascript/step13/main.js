@@ -3,60 +3,6 @@ JSトレーニング13 【単語帳の複数登録を行える様にする】
 */
 
 $(function(){
-    
-        
-    var wordBookObj = {
-        wordBooks: [{
-                  name: "fruit",
-                  wordBook: [{"word": "apple", "meaning": "りんご"}]
-                }],
-        updateBookNameIndex : 0,                // 編集する単語帳名のindex
-        updateWordIndex : 0,                    // 編集する単語のindex
-        questionIndex : 0,
-        questionWordIndex : 0,                      // 出題されている単語のindex
-
-        // 単語帳（単語帳名）追加
-        addBookName: function(text){
-            this.wordBooks.push({"name": text, wordBook: []});
-        },
-         // 編集する単語帳名のindex
-        editBookNameIndex: function(index){
-            this.updateBookNameIndex = index;
-        },
-        // 単語帳名更新
-        updateBookName: function(text){
-            this.wordBooks[this.updateBookNameIndex].name = text;
-        },
-        // 単語追加
-        addWord: function(text1, text2){
-            this.wordBooks[this.updateBookNameIndex].wordBook.push({ word: text1, meaning: text2 });
-        },
-        // 編集する単語のindex
-        editWordIndex: function(index){
-          this.updateWordIndex = index;
-        },
-        // 単語更新
-        updateWord: function(text1, text2){
-            this.wordBooks[this.updateBookNameIndex].wordBook[this.updateWordIndex].word = text1;
-            this.wordBooks[this.updateBookNameIndex].wordBook[this.updateWordIndex].meaning = text2;
-        },
-        // 問題index set
-        setQuestionIndex: function(index){
-            this.questionIndex = index;
-        },
-        // 問題index get
-        getQuestionIndex: function(){
-            return this.questionIndex;
-        },
-        // 問題単語index set
-        setQuestionWordIndex: function(index){
-            this.questionWordIndex = index;
-        },
-        // 問題単語index get
-        getQuestionWordIndex: function(){
-            return this.questionWordIndex;
-        }
-    }
 
     var bookNameEditBtn = '<input type="button" value="名前" class="js-bookNameEditBtn">';
     var selectQuestionBtn = '<input type="button" value="問題選択" class="js-selectQuestionBtn">';
@@ -106,12 +52,12 @@ $(function(){
         // 単語帳名の更新
         $books.find('.js-updateBtn').click(function(){
 
-            var text = $books.find('.js-updateName').val();
+            var text = $books.find('.js-updateNameTxt').val();
             console.log(text);
             wordBookObj.updateBookName(text);
-            $books.find('.js-updateName').text(text);
+            $books.find('.js-updateNameTxt').text(text);
             $books.find('.js-list > ul > li:eq('+wordBookObj.updateBookNameIndex+')').html(text + bookNameEditBtn + wordEditBtn);
-            $books.find('.js-updateName').val('');
+            $books.find('.js-updateNameTxt').val('');
             $books.find('.js-update').addClass('hide');
 
         });
@@ -123,7 +69,7 @@ $(function(){
                 var index = $books.find('.js-bookNameEditBtn').index(this);
      
                 wordBookObj.editBookNameIndex(index);
-                $books.find('.js-updateName').val(wordBookObj.wordBooks[index].name);
+                $books.find('.js-updateNameTxt').val(wordBookObj.wordBooks[index].name);
                 $books.find('.js-update').removeClass('hide');
             
             // 単語帳の編集
@@ -144,8 +90,8 @@ $(function(){
 
                 var index = $('.js-selectQuestionBtn').index(this);
 
-                wordBookObj.setQuestionIndex(index);
-                wordBookObj.setQuestionWordIndex(0);
+                questionObj.setQuestionIndex(index);
+                questionObj.setQuestionWordIndex(0);
 
                 if(wordBookObj.wordBooks[index].wordBook[0] != undefined){
                     changeQuestionBtn();
@@ -154,7 +100,6 @@ $(function(){
                     $('.js-meaningCard').text(wordBookObj.wordBooks[index].wordBook[0].meaning).addClass('hide');
                 }
             }
-
         });
 
         // 単語帳一覧 閉じる
@@ -164,9 +109,6 @@ $(function(){
             $books.addClass('hide');
         });
     });
-
-
-
 
     // 単語一覧
     function showWordList(){
@@ -194,14 +136,14 @@ $(function(){
             var check = validation('word');
             if (!check) return;
 
-            var word = $book.find('.js-word').val();
-            var meaing = $book.find('.js-meaning').val();
+            var word = $book.find('.js-wordTxt').val();
+            var meaing = $book.find('.js-meaningTxt').val();
             wordBookObj.addWord(word, meaing);
 
             showWordList();
 
-            $book.find('.js-word').val('');
-            $book.find('.js-meaning').val('');
+            $book.find('.js-wordTxt').val('');
+            $book.find('.js-meaningTxt').val('');
         });
 
         // 単語一覧の編集
@@ -209,8 +151,8 @@ $(function(){
             if ($(this).attr('class') == 'js-wordEditBtn'){
                 var index = $book.find('.js-wordEditBtn').index(this);
                 wordBookObj.editWordIndex(index);
-                $book.find('.js-updateWord').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].word);
-                $book.find('.js-updateMeaning').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].meaning);
+                $book.find('.js-updateWordTxt').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].word);
+                $book.find('.js-updateMeaningTxt').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].meaning);
                 $book.find('.js-update').removeClass('hide');
             }
         });
@@ -218,15 +160,15 @@ $(function(){
         // 単語の更新
         $book.find('.js-updateBtn').click(function(){
 
-            var word = $book.find('.js-updateWord').val();
-            var meaing = $book.find('.js-updateMeaning').val();
+            var word = $book.find('.js-updateWordTxt').val();
+            var meaing = $book.find('.js-updateMeaningTxt').val();
 
             wordBookObj.updateWord(word, meaing);
 
             $book.find('.js-list > ul > li:eq('+wordBookObj.updateWordIndex+')').html(word +' : '+ meaing + wordEditBtn);
 
-            $book.find('.js-updateWord').val('');
-            $book.find('.js-updateMeaning').val('');
+            $book.find('.js-updateWordTxt').val('');
+            $book.find('.js-updateMeaningTxt').val('');
             $book.find('.js-update').addClass('hide');
 
         });
@@ -253,16 +195,16 @@ $(function(){
 
         // 戻る
         $questions.find('.js-prevBtn').click(function(){
-            var index = wordBookObj.getQuestionWordIndex();
-            wordBookObj.setQuestionWordIndex(index -= 1);
+            var index = questionObj.getQuestionWordIndex();
+            questionObj.setQuestionWordIndex(index -= 1);
             changeQuestion();
             changeQuestionBtn();
         });
 
         // 進む
         $questions.find('.js-nextBtn').click(function(){
-            var index = wordBookObj.getQuestionWordIndex();
-            wordBookObj.setQuestionWordIndex(index += 1);
+            var index = questionObj.getQuestionWordIndex();
+            questionObj.setQuestionWordIndex(index += 1);
             changeQuestion();
             changeQuestionBtn();
         });
@@ -271,18 +213,18 @@ $(function(){
 
     // 問題の切り替え
     function changeQuestion(){
-        $('.js-questions .js-wordCard').text(wordBookObj.wordBooks[wordBookObj.getQuestionIndex()].wordBook[wordBookObj.getQuestionWordIndex()].word);
-        $('.js-questions .js-meaningCard').text(wordBookObj.wordBooks[wordBookObj.getQuestionIndex()].wordBook[wordBookObj.getQuestionWordIndex()].meaning);
+        $('.js-questions .js-wordCard').text(wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook[questionObj.getQuestionWordIndex()].word);
+        $('.js-questions .js-meaningCard').text(wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook[questionObj.getQuestionWordIndex()].meaning);
     }
 
     // 戻る/進む ボタンの切り替え
     function changeQuestionBtn(){
-        if(wordBookObj.getQuestionWordIndex() == 0) {
+        if(questionObj.getQuestionWordIndex() == 0) {
             $('.js-prevBtn').addClass('hide');
         } else {
             $('.js-prevBtn').removeClass('hide');
         }
-        if(wordBookObj.getQuestionWordIndex() == wordBookObj.wordBooks[wordBookObj.getQuestionIndex()].wordBook.length-1) {
+        if(questionObj.getQuestionWordIndex() == wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook.length-1) {
             $('.js-nextBtn').addClass('hide');
         } else {
             $('.js-nextBtn').removeClass('hide');
@@ -301,11 +243,11 @@ $(function(){
         }
         
         if(str == 'word'){
-            if($('.js-word').val() == ''){
+            if($('.js-wordTxt').val() == ''){
                 errorMsg += '単語を入力してください。';
             }
 
-            if($('.js-meaning').val() == ''){
+            if($('.js-meaningTxt').val() == ''){
                 errorMsg += '意味を入力してください。';
             }
         }
