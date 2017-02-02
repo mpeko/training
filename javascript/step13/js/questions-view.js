@@ -7,8 +7,8 @@ var changeQuestionBtn;  //戻る/進む ボタンの切り替え
 
 $(function(){
 
-    $('.js-wordCard').text(wordBookObj.wordBooks[0].wordBook[0].word);
-    $('.js-meaningCard').text(wordBookObj.wordBooks[0].wordBook[0].meaning).addClass('hide');
+    $('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[0].word);
+    $('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[0].meaning).addClass('hide');
     $('.js-questionBtnGroup').addClass('hide');
 
      var inputQuestionsObj = {
@@ -48,8 +48,8 @@ $(function(){
 
     // 問題の切り替え
     changeQuestion = function(){
-        elementObj.$questions.find('.js-wordCard').text(wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook[questionObj.getQuestionWordIndex()].word);
-        elementObj.$questions.find('.js-meaningCard').text(wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook[questionObj.getQuestionWordIndex()].meaning);
+        elementObj.$questions.find('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[questionObj.getQuestionWordIndex()].word);
+        elementObj.$questions.find('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[questionObj.getQuestionWordIndex()].meaning);
     }
 
     // 戻る/進む ボタンの切り替え
@@ -59,7 +59,8 @@ $(function(){
         } else {
             elementObj.$questions.find('.js-prevBtn').removeClass('hide');
         }
-        if(questionObj.getQuestionWordIndex() == wordBookObj.wordBooks[questionObj.getQuestionIndex()].wordBook.length-1) {
+
+        if(questionObj.getQuestionWordIndex() == wordBookObj.currentQuestionBook.wordBook.length-1) {
             elementObj.$questions.find('.js-nextBtn').addClass('hide');
         } else {
             elementObj.$questions.find('.js-nextBtn').removeClass('hide');

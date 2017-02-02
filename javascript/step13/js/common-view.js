@@ -40,11 +40,11 @@ $(function(){
             errorMsg = '<p class="js-errorMsg">'+ errorMsg +'</p>'
 
             if(str == 'book'){
-                $(".js-wordBooks .js-addGroup").append(errorMsg);
+                $('.js-wordBooks .js-addGroup').append(errorMsg);
             }
 
             if(str == 'word'){
-                 $(".js-wordBook .js-addGroup").append(errorMsg);
+                 $('.js-wordBook .js-addGroup').append(errorMsg);
             }
 
             return false;

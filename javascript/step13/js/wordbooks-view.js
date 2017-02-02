@@ -5,7 +5,7 @@
 var bookNameEditBtn = '<input type="button" value="名前" class="js-bookNameEditBtn">';
 var selectQuestionBtn = '<input type="button" value="問題選択" class="js-selectQuestionBtn">';
 var wordEditBtn = '<input type="button" value="編集" class="js-wordEditBtn">';
-var initList = '<ul><li>'+ wordBookObj.wordBooks[0].name + bookNameEditBtn + wordEditBtn + selectQuestionBtn +'</li></ul>'
+var initList = '<ul><li>'+ wordBookObj.currentEditBook.name + bookNameEditBtn + wordEditBtn + selectQuestionBtn +'</li></ul>'
 
 $(function(){
 
@@ -73,6 +73,7 @@ $(function(){
             if ($(this).attr('class') == 'js-bookNameEditBtn'){
                 var index = $books.find('.js-bookNameEditBtn').index(this);
                 wordBookObj.editBookNameIndex(index);
+                wordBookObj.currentEditBook = wordBookObj.wordBooks[index];
                 $books.find('.js-updateNameTxt').val(wordBookObj.wordBooks[index].name);
                 $books.find('.js-update').removeClass('hide');
             
@@ -81,6 +82,7 @@ $(function(){
                 var index = $books.find('.js-wordEditBtn').index(this);
                 elementObj.$wordBook.find('.js-bookName').text(wordBookObj.wordBooks[index].name);
                 wordBookObj.editBookNameIndex(index);
+                wordBookObj.currentEditBook = wordBookObj.wordBooks[index];
                 $books.addClass('hide');
                 elementObj.$wordBook.removeClass('hide');
 
@@ -89,14 +91,15 @@ $(function(){
             // 問題の選択
             } else if ($(this).attr('class') == 'js-selectQuestionBtn'){
                 var index = $books.find('.js-selectQuestionBtn').index(this);
-                questionObj.setQuestionIndex(index);
+
+                wordBookObj.currentQuestionBook = wordBookObj.wordBooks[index];
                 questionObj.setQuestionWordIndex(0);
 
                 if(wordBookObj.wordBooks[index].wordBook[0] != undefined){
                     changeQuestionBtn();
                     elementObj.$questions.find('.js-questionBtnGroup').removeClass('hide');
-                    elementObj.$questions.find('.js-wordCard').text(wordBookObj.wordBooks[index].wordBook[0].word);
-                    elementObj.$questions.find('.js-meaningCard').text(wordBookObj.wordBooks[index].wordBook[0].meaning).addClass('hide');
+                    elementObj.$questions.find('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[0].word);
+                    elementObj.$questions.find('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[0].meaning).addClass('hide');
                 }
             }
         });

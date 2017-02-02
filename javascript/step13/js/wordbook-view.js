@@ -68,8 +68,8 @@ $(function(){
             $book.find('.js-list ul').remove();
 
             var list = '<ul>';
-            for (var i = 0; i < wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook.length; i++) {
-                list += "<li>"+ wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[i].word +' : ' + wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[i].meaning +wordEditBtn +"</li>"
+            for (var i = 0; i < wordBookObj.currentEditBook.wordBook.length; i++) {
+                list += "<li>"+ wordBookObj.currentEditBook.wordBook[i].word +' : ' + wordBookObj.currentEditBook.wordBook[i].meaning +wordEditBtn +"</li>"
             }
             list += '</ul>';
             $book.find('.js-list').append(list);
@@ -83,8 +83,8 @@ $(function(){
             if ($(this).attr('class') == 'js-wordEditBtn'){
                 var index = $book.find('.js-wordEditBtn').index(this);
                 wordBookObj.editWordIndex(index);
-                $book.find('.js-updateWordTxt').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].word);
-                $book.find('.js-updateMeaningTxt').val(wordBookObj.wordBooks[wordBookObj.updateBookNameIndex].wordBook[wordBookObj.updateWordIndex].meaning);
+                $book.find('.js-updateWordTxt').val(wordBookObj.currentEditBook.wordBook[wordBookObj.updateWordIndex].word);
+                $book.find('.js-updateMeaningTxt').val(wordBookObj.currentEditBook.wordBook[wordBookObj.updateWordIndex].meaning);
                 $book.find('.js-update').removeClass('hide');
             }
         });
