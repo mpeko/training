@@ -7,13 +7,18 @@ var changeQuestionBtn;  //戻る/進む ボタンの切り替え
 
 $(function(){
 
-    $('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[0].word);
-    $('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[0].meaning).addClass('hide');
-    $('.js-questionBtnGroup').addClass('hide');
-
      var inputQuestionsObj = {
         $el: elementObj.$questions,
         data: wordBookObj,
+        initialize: function() {
+            this.$el.find('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[0].word);
+            this.$el.find('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[0].meaning).addClass('hide');
+            this.$el.find('.js-questionBtnGroup').addClass('hide');
+
+            this.onAnswerBtn();
+            this.onPrevBtn();
+            this.onNextBtn();
+	    },
         onAnswerBtn: function() {
             var addBtn = this.$el.find('.js-answerBtn');
             var self = this;
@@ -67,7 +72,5 @@ $(function(){
         }
     }
 
-    inputQuestionsObj.onAnswerBtn();
-    inputQuestionsObj.onPrevBtn();
-    inputQuestionsObj.onNextBtn();
+    inputQuestionsObj.initialize();
 });

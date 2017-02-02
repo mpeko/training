@@ -6,6 +6,9 @@ $(function(){
 
     var inputTopBtnObj = {
         $el: elementObj.$topBtns,
+        initialize: function() {
+            this.onWordBooksBtn();
+	    },
         onWordBooksBtn: function() {
             var wordBooksBtn = this.$el.find('.js-wordBooksBtn');
             wordBooksBtn.click(function(){
@@ -16,5 +19,5 @@ $(function(){
         }
     }
 
-    inputTopBtnObj.onWordBooksBtn();
+    inputTopBtnObj.initialize();
 });

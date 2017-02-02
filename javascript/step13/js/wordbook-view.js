@@ -6,18 +6,25 @@ var showWordList;   // 単語一覧表示
 
 $(function(){
 
-    $('.js-wordBook').addClass('hide');
-    $('.js-wordBook .js-update').addClass('hide');
-
     var inputWordBookObj = {
         $el: elementObj.$wordBook,
         data: wordBookObj,
+        initialize: function() {
+            this.$el.addClass('hide');
+            this.$el.find('.js-update').addClass('hide');
+
+            this.onAddBtn();
+            this.onUpdateBtn();
+            this.onCloseBtn();
+	    },
         onAddBtn: function() {
             var addBtn = this.$el.find('.js-addBtn');
             var self = this;
             addBtn.click(function(){
                 // 単語追加ボタンが押された場合の処理
-                var check = validation('word');
+                self.$el.find('.js-errorMsg').remove();
+                var checkArr = validWordBook($('.js-wordTxt').val(), $('.js-meaningTxt').val());
+                var check = displayError(checkArr);
                 if (!check) return;
 
                 var word = self.$el.find('.js-wordTxt').val();
@@ -56,7 +63,7 @@ $(function(){
                 self.$el.addClass('hide');
                 changeQuestionBtn();
 
-                $('.js-errorMsg').remove();
+                self.$el.find('.js-errorMsg').remove();
             });
         }
     }
@@ -90,7 +97,26 @@ $(function(){
         });
     });
 
-    inputWordBookObj.onAddBtn();
-    inputWordBookObj.onUpdateBtn();
-    inputWordBookObj.onCloseBtn();
+    var displayError = function(arr){
+        var flag = true;
+        var errorMsg = '';
+    
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[0] == false){
+                errorMsg += '単語を入力してください。';
+            } else if (arr[1] == false) {
+                errorMsg += '意味を入力してください。';
+            }
+        }
+
+        if (errorMsg != ''){
+            errorMsg = '<p class="js-errorMsg">'+ errorMsg +'</p>'
+            $('.js-wordBook .js-addGroup').append(errorMsg);
+            flag = false;
+        }
+
+        return flag;
+    }
+
+    inputWordBookObj.initialize();
 });

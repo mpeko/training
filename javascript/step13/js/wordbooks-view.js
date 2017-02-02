@@ -12,14 +12,24 @@ $(function(){
     var inputWordBooksObj = {
         $el: elementObj.$wordBooks,
         data: wordBookObj,
+        initialize: function() {
+
+            this.onAddBtn();
+            this.onUpdateBtn();
+            this.onCloseBtn();
+	    },
         onAddBtn: function() {
             var addBtn = this.$el.find('.js-addBtn');
             var self = this;
             // addBtn.on('click', function(){
             addBtn.click(function(){
                 // 単語帳追加ボタンが押された場合の処理
-                var check = validation('book');
-                if (!check) return;
+                self.$el.find('.js-errorMsg').remove();
+                var check = validWordBooks($('.js-bookNameTxt').val());
+                if (!check){
+                    displayError();
+                    return;
+                }
 
                 var name = self.$el.find('.js-bookNameTxt').val();
                 self.data.addBookName(name);
@@ -105,7 +115,11 @@ $(function(){
         });
     });
 
-    inputWordBooksObj.onAddBtn();
-    inputWordBooksObj.onUpdateBtn();
-    inputWordBooksObj.onCloseBtn();
+    var displayError = function(){
+        var errorMsg = '';
+        errorMsg = '<p class="js-errorMsg">単語帳名を入力してください。</p>';
+        $('.js-wordBooks .js-addGroup').append(errorMsg);
+    }
+
+    inputWordBooksObj.initialize();
 });

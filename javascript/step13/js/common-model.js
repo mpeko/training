@@ -52,3 +52,24 @@ var questionObj = {
         return this.questionWordIndex;
     }
 }
+
+
+var validWordBooks = function(str){
+    
+    if(str == ''){
+        return false;
+    } else {
+        return true;
+    }
+}
+
+var validWordBook = function(str1, str2){
+
+    var arr = [];
+
+    (str1 == '') ? arr.push(false) : arr.push(true);
+    (str2 == '') ? arr.push(false) : arr.push(true);
+
+    return arr;
+}
+
