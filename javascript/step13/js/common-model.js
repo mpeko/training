@@ -1,5 +1,5 @@
 /*
-JSトレーニング13 【単語帳の複数登録を行える様にする】 
+
 */
       
 var wordBookObj = {
@@ -10,8 +10,8 @@ var wordBookObj = {
     updateBookNameIndex : 0,                // 編集する単語帳名のindex
     updateWordIndex : 0,                    // 編集する単語のindex
     questionIndex : 0,
-    questionWordIndex : 0,                      // 出題されている単語のindex
-
+    questionWordIndex : 0,                  // 出題されている単語のindex
+    
     // 単語帳（単語帳名）追加
     addBookName: function(text){
         this.wordBooks.push({"name": text, wordBook: []});
