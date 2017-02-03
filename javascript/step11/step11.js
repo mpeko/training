@@ -40,7 +40,8 @@ $(function(){
         url: 'data.json',
         dataType: 'json',
         success: function(data){
-            for(var i in data){
+
+            for (var i = 0; i < data.length; i++) {
                 var word = data[i].wordlist[0].word;
                 var meaing = data[i].wordlist[0].meaning;
                 wordBookObj.add(word, meaing);
