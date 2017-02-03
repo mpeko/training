@@ -13,6 +13,9 @@ $(function(){
         $el: elementObj.$wordBooks,
         data: wordBookObj,
         initialize: function() {
+            this.$el.addClass('hide');
+            this.$el.find('.js-update').addClass('hide');
+            this.$el.find('.js-list').append(initList);
 
             this.onAddBtn();
             this.onUpdateBtn();
@@ -25,9 +28,9 @@ $(function(){
             addBtn.click(function(){
                 // 単語帳追加ボタンが押された場合の処理
                 self.$el.find('.js-errorMsg').remove();
-                var check = validWordBooks($('.js-bookNameTxt').val());
+                var check = validObj.validWordBooks($('.js-bookNameTxt').val());
                 if (!check){
-                    displayError();
+                    self.displayError();
                     return;
                 }
 
@@ -36,8 +39,9 @@ $(function(){
 
                 // 表示
                 self.$el.find('.js-list ul').remove();
+                var wordBooksLength = self.data.wordBooks.length;
                 var list = '<ul>';
-                for (var i = 0; i < self.data.wordBooks.length; i++) {
+                for (var i = 0; i < wordBooksLength; i++) {
                     list += "<li>"+ self.data.wordBooks[i].name + bookNameEditBtn + wordEditBtn + selectQuestionBtn +"</li>"
                 }
                 list += '</ul>';
@@ -68,14 +72,16 @@ $(function(){
                 self.$el.find('.js-errorMsg').remove();
                 self.$el.addClass('hide');
             });
+        },
+        displayError: function() {
+            var errorMsg = '';
+            errorMsg = '<p class="js-errorMsg">単語帳名を入力してください。</p>';
+            this.$el.find('.js-addGroup').append(errorMsg);
         }
     }
 
     $('.js-wordBooks').each(function(){
         $books = $(this);
-        $books.addClass('hide');
-        $books.find('.js-update').addClass('hide');
-        $books.find('.js-list').append(initList);
 
         $books.find('.js-list').on('click', 'input' ,function() {
             
@@ -114,12 +120,6 @@ $(function(){
             }
         });
     });
-
-    var displayError = function(){
-        var errorMsg = '';
-        errorMsg = '<p class="js-errorMsg">単語帳名を入力してください。</p>';
-        $('.js-wordBooks .js-addGroup').append(errorMsg);
-    }
 
     inputWordBooksObj.initialize();
 });

@@ -23,12 +23,14 @@ $(function(){
             addBtn.click(function(){
                 // 単語追加ボタンが押された場合の処理
                 self.$el.find('.js-errorMsg').remove();
-                var checkArr = validWordBook($('.js-wordTxt').val(), $('.js-meaningTxt').val());
-                var check = displayError(checkArr);
-                if (!check) return;
 
                 var word = self.$el.find('.js-wordTxt').val();
                 var meaing = self.$el.find('.js-meaningTxt').val();
+
+                self.displayError(word, meaing);
+                var check = validObj.validWordBook(word, meaing);
+                if (!check) return;
+
                 wordBookObj.addWord(word, meaing);
 
                 showWordList();
@@ -65,6 +67,21 @@ $(function(){
 
                 self.$el.find('.js-errorMsg').remove();
             });
+        },
+        displayError: function(word, meaning) {
+            var errorMsg = '';
+        
+            if (word == ''){
+                errorMsg += '単語を入力してください。';
+            }
+            if (meaning == '') {
+                errorMsg += '意味を入力してください。';
+            }
+
+            if (errorMsg != ''){
+                errorMsg = '<p class="js-errorMsg">'+ errorMsg +'</p>'
+                this.$el.find('.js-addGroup').append(errorMsg);
+            }
         }
     }
 
@@ -73,9 +90,9 @@ $(function(){
         $('.js-wordBook').each(function(){
             $book = $(this);
             $book.find('.js-list ul').remove();
-
+            var wordBookLength = wordBookObj.currentEditBook.wordBook.length;
             var list = '<ul>';
-            for (var i = 0; i < wordBookObj.currentEditBook.wordBook.length; i++) {
+            for (var i = 0; i < wordBookLength; i++) {
                 list += "<li>"+ wordBookObj.currentEditBook.wordBook[i].word +' : ' + wordBookObj.currentEditBook.wordBook[i].meaning +wordEditBtn +"</li>"
             }
             list += '</ul>';
@@ -96,27 +113,6 @@ $(function(){
             }
         });
     });
-
-    var displayError = function(arr){
-        var flag = true;
-        var errorMsg = '';
-    
-        for (var i = 0; i < arr.length; i++) {
-            if (arr[0] == false){
-                errorMsg += '単語を入力してください。';
-            } else if (arr[1] == false) {
-                errorMsg += '意味を入力してください。';
-            }
-        }
-
-        if (errorMsg != ''){
-            errorMsg = '<p class="js-errorMsg">'+ errorMsg +'</p>'
-            $('.js-wordBook .js-addGroup').append(errorMsg);
-            flag = false;
-        }
-
-        return flag;
-    }
 
     inputWordBookObj.initialize();
 });
