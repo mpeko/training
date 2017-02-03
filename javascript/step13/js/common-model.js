@@ -6,7 +6,12 @@ var wordBookObj = {
     wordBooks: [{
                 name: "fruit",
                 wordBook: [{"word": "apple", "meaning": "りんご"}]
-            }],
+    }],
+    errorMessages:[{
+                bookName: '単語帳名を入力してください。',
+                word: '単語を入力してください。',
+                meaning: '意味を入力してください。'
+    }],
     currentEditBook : undefined,            // 編集する単語帳
     updateBookNameIndex : 0,                // 編集する単語帳名のindex
     updateWordIndex : 0,                    // 編集する単語のindex
@@ -36,13 +41,7 @@ var wordBookObj = {
     updateWord: function(text1, text2){
         this.currentEditBook.wordBook[this.updateWordIndex].word = text1;
         this.currentEditBook.wordBook[this.updateWordIndex].meaning = text2;
-    }
-}
-
-wordBookObj.currentEditBook = wordBookObj.wordBooks[0];
-wordBookObj.currentQuestionBook = wordBookObj.wordBooks[0];
-
-var questionObj = {
+    },
     // 問題単語index set
     setQuestionWordIndex: function(index){
         this.questionWordIndex = index;
@@ -50,10 +49,7 @@ var questionObj = {
     // 問題単語index get
     getQuestionWordIndex: function(){
         return this.questionWordIndex;
-    }
-}
-
-var validObj = {
+    },
     validWordBooks: function(bookName){
         if(bookName == ''){
             return false;
@@ -72,3 +68,6 @@ var validObj = {
         return flag;
     }
 }
+
+wordBookObj.currentEditBook = wordBookObj.wordBooks[0];
+wordBookObj.currentQuestionBook = wordBookObj.wordBooks[0];

@@ -27,8 +27,8 @@ $(function(){
             // addBtn.on('click', function(){
             addBtn.click(function(){
                 // 単語帳追加ボタンが押された場合の処理
-                self.$el.find('.js-errorMsg').remove();
-                var check = validObj.validWordBooks($('.js-bookNameTxt').val());
+                self.$el.find('.js-errorMsg').text('');
+                var check = wordBookObj.validWordBooks($('.js-bookNameTxt').val());
                 if (!check){
                     self.displayError();
                     return;
@@ -39,12 +39,10 @@ $(function(){
 
                 // 表示
                 self.$el.find('.js-list ul').remove();
-                var wordBooksLength = self.data.wordBooks.length;
-                var list = '<ul>';
-                for (var i = 0; i < wordBooksLength; i++) {
-                    list += "<li>"+ self.data.wordBooks[i].name + bookNameEditBtn + wordEditBtn + selectQuestionBtn +"</li>"
-                }
-                list += '</ul>';
+                
+                var wordBooks = self.data.wordBooks;
+                var list = _.template("<ul>"+"<% _.each(wordBooks, function(item) { %>"+" <li><%= item.name %>  <%= bookNameEditBtn %><%= wordEditBtn %><%= selectQuestionBtn %></li>"+"<% }); %>"+"</ul>")({wordBooks: wordBooks});
+
                 self.$el.find(".js-list").append(list);
                 self.$el.find('.js-bookNameTxt').val('');
             });
@@ -74,9 +72,8 @@ $(function(){
             });
         },
         displayError: function() {
-            var errorMsg = '';
-            errorMsg = '<p class="js-errorMsg">単語帳名を入力してください。</p>';
-            this.$el.find('.js-addGroup').append(errorMsg);
+            var errorMsg = wordBookObj.errorMessages[0].bookName;
+            this.$el.find('.js-errorMsg').text(errorMsg);
         }
     }
 
@@ -109,7 +106,7 @@ $(function(){
                 var index = $books.find('.js-selectQuestionBtn').index(this);
 
                 wordBookObj.currentQuestionBook = wordBookObj.wordBooks[index];
-                questionObj.setQuestionWordIndex(0);
+                wordBookObj.setQuestionWordIndex(0);
 
                 if(wordBookObj.wordBooks[index].wordBook[0] != undefined){
                     changeQuestionBtn();

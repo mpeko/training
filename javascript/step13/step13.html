@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>JSトレーニング13 【単語帳の複数登録を行える様にする】 </title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
     <script type="text/javascript" src="js/common-model.js"></script>
     <script type="text/javascript" src="js/common-view.js"></script>
     <script type="text/javascript" src="js/questions-view.js"></script>
@@ -56,6 +57,7 @@
             単語帳名<input type="text" size="10" class="js-bookNameTxt">
             <input type="button" value="単語帳を登録" class="js-addBtn">
         </p>
+        <p class="js-errorMsg"></p>
 
         <p> 
             <input type="button" value="閉じる" class="js-closeBtn">
@@ -88,6 +90,7 @@
             意味<input type="text" size="20" class="js-meaningTxt">
             <input type="button" value="単語を登録" class="js-addBtn">
         </div>
+        <p class="js-errorMsg"></p>
 
         <p>
             <input type="button" value="閉じる" class="js-closeBtn">

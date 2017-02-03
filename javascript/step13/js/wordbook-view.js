@@ -22,13 +22,13 @@ $(function(){
             var self = this;
             addBtn.click(function(){
                 // 単語追加ボタンが押された場合の処理
-                self.$el.find('.js-errorMsg').remove();
+                self.$el.find('.js-errorMsg').text('');
 
                 var word = self.$el.find('.js-wordTxt').val();
                 var meaing = self.$el.find('.js-meaningTxt').val();
 
                 self.displayError(word, meaing);
-                var check = validObj.validWordBook(word, meaing);
+                var check = wordBookObj.validWordBook(word, meaing);
                 if (!check) return;
 
                 wordBookObj.addWord(word, meaing);
@@ -70,18 +70,13 @@ $(function(){
         },
         displayError: function(word, meaning) {
             var errorMsg = '';
-        
             if (word == ''){
-                errorMsg += '単語を入力してください。';
+                errorMsg += wordBookObj.errorMessages[0].word;
             }
             if (meaning == '') {
-                errorMsg += '意味を入力してください。';
+                errorMsg += wordBookObj.errorMessages[0].meaning;
             }
-
-            if (errorMsg != ''){
-                errorMsg = '<p class="js-errorMsg">'+ errorMsg +'</p>'
-                this.$el.find('.js-addGroup').append(errorMsg);
-            }
+            this.$el.find('.js-errorMsg').text(errorMsg);
         }
     }
 
@@ -90,12 +85,16 @@ $(function(){
         $('.js-wordBook').each(function(){
             $book = $(this);
             $book.find('.js-list ul').remove();
-            var wordBookLength = wordBookObj.currentEditBook.wordBook.length;
-            var list = '<ul>';
-            for (var i = 0; i < wordBookLength; i++) {
-                list += "<li>"+ wordBookObj.currentEditBook.wordBook[i].word +' : ' + wordBookObj.currentEditBook.wordBook[i].meaning +wordEditBtn +"</li>"
-            }
-            list += '</ul>';
+            
+            // var list = '<ul>';
+            // for (var i = 0; i < wordBookObj.currentEditBook.wordBook.length; i++) {
+            //     list += "<li>"+ wordBookObj.currentEditBook.wordBook[i].word +' : ' + wordBookObj.currentEditBook.wordBook[i].meaning +wordEditBtn +"</li>"
+            // }
+            // list += '</ul>';
+
+            var wordBook = wordBookObj.currentEditBook.wordBook;
+            var list = _.template("<ul>"+"<% _.each(wordBook, function(item) { %>"+" <li><%= item.word %> : <%= item.meaning %> <%= wordEditBtn %></li>"+"<% }); %>"+"</ul>")({wordBook: wordBook});
+
             $book.find('.js-list').append(list);
         });
     }

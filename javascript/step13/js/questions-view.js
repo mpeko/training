@@ -32,8 +32,8 @@ $(function(){
             var self = this;
             prevBtn.click(function(){
                 // 戻る
-                var index = questionObj.getQuestionWordIndex();
-                questionObj.setQuestionWordIndex(index -= 1);
+                var index = wordBookObj.getQuestionWordIndex();
+                wordBookObj.setQuestionWordIndex(index -= 1);
                 changeQuestion();
                 changeQuestionBtn();
             });
@@ -43,8 +43,8 @@ $(function(){
             var self = this;
             nextBtn.click(function(){
                 // 進む
-                var index = questionObj.getQuestionWordIndex();
-                questionObj.setQuestionWordIndex(index += 1);
+                var index = wordBookObj.getQuestionWordIndex();
+                wordBookObj.setQuestionWordIndex(index += 1);
                 changeQuestion();
                 changeQuestionBtn();
             });
@@ -53,19 +53,19 @@ $(function(){
 
     // 問題の切り替え
     changeQuestion = function(){
-        elementObj.$questions.find('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[questionObj.getQuestionWordIndex()].word);
-        elementObj.$questions.find('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[questionObj.getQuestionWordIndex()].meaning);
+        elementObj.$questions.find('.js-wordCard').text(wordBookObj.currentQuestionBook.wordBook[wordBookObj.getQuestionWordIndex()].word);
+        elementObj.$questions.find('.js-meaningCard').text(wordBookObj.currentQuestionBook.wordBook[wordBookObj.getQuestionWordIndex()].meaning);
     }
 
     // 戻る/進む ボタンの切り替え
     changeQuestionBtn = function(){
-        if(questionObj.getQuestionWordIndex() == 0) {
+        if(wordBookObj.getQuestionWordIndex() == 0) {
             elementObj.$questions.find('.js-prevBtn').addClass('hide');
         } else {
             elementObj.$questions.find('.js-prevBtn').removeClass('hide');
         }
 
-        if(questionObj.getQuestionWordIndex() == wordBookObj.currentQuestionBook.wordBook.length-1) {
+        if(wordBookObj.getQuestionWordIndex() == wordBookObj.currentQuestionBook.wordBook.length-1) {
             elementObj.$questions.find('.js-nextBtn').addClass('hide');
         } else {
             elementObj.$questions.find('.js-nextBtn').removeClass('hide');
