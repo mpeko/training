@@ -41,14 +41,9 @@ $(function(){
         $('.js-wordBookList ul').remove();
         $('.js-wordBookListGroup').removeClass('hide');
 
-        var word_list = '<ul>';
-        _.each(wordBookList,function(elm, i){
-            var wordBook = _.values(elm);
-            word_list += "<li>"+wordBook[0] +' : '+ wordBook[1] + editBtn +"</li>";
+        var wordList = _.template("<ul>"+"<% _.each(wordBookList, function(item) { %>"+" <li><%= item.word %> : <%= item.meaning %> <input type='button' value='編集' class='js-editBtn'></li>"+"<% }); %>"+"</ul>")({wordBookList: wordBookList});
 
-        });
-        word_list += '</ul>';
-        $(".js-wordBookList").append(word_list);
+        $(".js-wordBookList").append(wordList);
     });
 
     // 単語編集
@@ -104,8 +99,16 @@ $(function(){
 
     // 戻る/進む ボタンの切り替え
     function changeQuestionBtn(){
-        (showQuestionIndex == 0) ? $('.js-prevBtn').addClass('hide') : $('.js-prevBtn').removeClass('hide');
-        (showQuestionIndex == wordBookList.length-1) ? $('.js-nextBtn').addClass('hide') : $('.js-nextBtn').removeClass('hide');
+        if(showQuestionIndex == 0) {
+            $('.js-prevBtn').addClass('hide');
+        } else {
+            $('.js-prevBtn').removeClass('hide');
+        }
+        if(showQuestionIndex == wordBookList.length-1) {
+            $('.js-nextBtn').addClass('hide');
+        } else {
+            $('.js-nextBtn').removeClass('hide');
+        }
     }
 
     // バリデーション
