@@ -1,0 +1,108 @@
+
+
+#wrapper {
+  width: 800px;
+  margin-right: auto;
+  margin-left : auto;
+}
+
+
+#main {
+  overflow: hidden;
+  width: 800px;
+}
+
+#container {
+  float: left;
+  width: 600px;
+}
+
+#sidebar {
+  float: right;
+  width: 160px;
+  border: 2px solid #666;
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid #666;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p.line-box {
+   border-bottom: 1px solid #333;
+}
+
+.main-img {
+  width: 600x;
+}
+
+p.img-box0 {
+  position: relative;
+}
+
+p.img-box {
+  float: left;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/*.txt {
+  position:absolute;
+  left:100px;
+  right:100px;
+}*/
+
+
+/*--------------------------------*/
+/*.photo {
+	position:	relative; 
+}
+
+.text1 {
+	position: absolute;
+  top: 50px;
+  left: 110px;
+  width: 50px;
+  color: #fff;
+  font-weight: bold;
+}
+.text2 {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  text-align: center;
+  width: 50px;
+  color: #fff;
+	background-color: #ff0000;
+  font-weight: bold;
+}*/
+/*--------------------------------*/
+
+.profile {
+  clear:both;
+  padding: 20px;
+}
+
+.profile-contents {
+  width: 490px;
+  overflow: hidden;
+  border: 2px solid #666;
+  padding: 20px;
+}
+
+.profile-img {
+  float: left;
+}
+
+.profile-txt {
+  width: 350px;
+  float: right;
+  /*padding:20px;*/
+}
+
