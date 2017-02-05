@@ -1,4 +1,6 @@
-
+body{
+     font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
 
 #wrapper {
   width: 800px;
@@ -6,6 +8,10 @@
   margin-left : auto;
 }
 
+#header {
+  height: 50px;
+  padding: 15px 0 0 20px;
+}
 
 #main {
   overflow: hidden;
@@ -20,9 +26,8 @@
 #sidebar {
   float: right;
   width: 160px;
-  border: 2px solid #666;
   padding: 20px;
-  margin: 20px;
+  margin: 0 20px 20px;
   border: 2px solid #666;
 
   -webkit-box-sizing: border-box;
@@ -30,79 +35,131 @@
           box-sizing: border-box;
 }
 
+.logo {
+  width: 202px;
+  height: 30px;
+  background: url('img/header_logo.png');
+  background-repeat: no-repeat;
+}
+
 ul {
   list-style-type: none;
+  margin-left: -40px;
+  font-weight: bold;
+  margin-bottom: 50px;
 }
 
-p.line-box {
-   border-bottom: 1px solid #333;
+/*floatプロパティを解除*/
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: '';
 }
 
+/* --------------------------------------------------
+main-img
+-------------------------------------------------- */
 .main-img {
   width: 600x;
 }
 
-p.img-box0 {
+.img-box {
   position: relative;
-}
-
-p.img-box {
   float: left;
-  padding-right: 20px;
-  padding-left: 20px;
+  width: 250px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+  margin: 0 20px 40px;
 }
 
-/*.txt {
-  position:absolute;
-  left:100px;
-  right:100px;
-}*/
+.cover {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 150px;
+  background-color: #000;
+  opacity: .5;
+}
 
-
-/*--------------------------------*/
-/*.photo {
-	position:	relative; 
+.text-box1 {
+	position: absolute;
+  top: 55px;
+  left: 80px;
+  width: 46px;
+  /*上下ボーダー*/
+  padding: 5px 20px 5px 15px;
+  border: solid #fff ;
+  border-width:2px 0 2px 0;
 }
 
 .text1 {
-	position: absolute;
-  top: 50px;
-  left: 110px;
-  width: 50px;
-  color: #fff;
+  font-size: 20px;
   font-weight: bold;
+  color: #fff;
 }
-.text2 {
-  position: absolute;
-  top: 30px;
-  left: 0px;
-  text-align: center;
-  width: 50px;
-  color: #fff;
-	background-color: #ff0000;
-  font-weight: bold;
-}*/
-/*--------------------------------*/
 
+.text-box2 {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 65px;
+  height: 20px;
+  margin-top: 2px;
+  font-weight: bold;
+  text-align: center;
+	background-color: #ff0000;
+  /*角丸*/
+  border-radius: 5px;           /* CSS3草案 */  
+  -webkit-border-radius: 5px;   /* Safari,Google Chrome用 */  
+  -moz-border-radius: 5px;      /* Firefox用 */  
+}
+
+.text2 {
+  font-size: 12px;
+  color: #fff;
+}
+
+/* --------------------------------------------------
+profile
+-------------------------------------------------- */
 .profile {
-  clear:both;
-  padding: 20px;
+  margin: 0 20px 50px;
 }
 
 .profile-contents {
-  width: 490px;
   overflow: hidden;
-  border: 2px solid #666;
-  padding: 20px;
+  width: 495px;
+  padding: 40px 20px;
+  border: 2px solid #333;
 }
 
 .profile-img {
   float: left;
+  width: 100px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+}
+
+.profile-icon {
+  margin-top: 30px;
+  width: 100px;
+}
+
+.profile-icon img {
+  padding-right: 5px;
 }
 
 .profile-txt {
-  width: 350px;
   float: right;
-  /*padding:20px;*/
+  width: 350px;
+  font-size: 12px;
+  line-height: 1.5; /*文字サイズ×1.5倍の高さを指定*/
 }
 
+/* --------------------------------------------------
+sidebar 
+-------------------------------------------------- */
+
+.line-box {
+   border-bottom: 1px solid #666;
+}
+
+.link-img img{
+  margin-bottom: 15px;
+}
