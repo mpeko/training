@@ -4,22 +4,32 @@ body{
      font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
 }
 
-@media only screen and (min-width: 321px) {
-  .sp{
-    display:none;
-  }
-  .pc{
-    display:block;
-  }
+.sp{
+  display:none;
 }
 
-@media only screen and (max-width: 320px){
-  .sp{
-    display:block;
-  }
-  .pc{
-    display:none;
-  }
+.pc{
+  display:block;
+}
+
+/*floatプロパティを解除*/
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 0 50px -40px;
+  font-weight: bold;
+}
+
+.logo {
+  width: 202px;
+  height: 30px;
+  background: url('img/header_logo.png');
+  background-repeat: no-repeat;
 }
 
 #wrapper {
@@ -33,92 +43,26 @@ body{
   padding: 15px 0 0 20px;
 }
 
-@media only screen and (min-width: 321px) {
-  #main {
-    overflow: hidden;
-    width: 800px;
-  }
+#main {
+  overflow: hidden;
+  width: 800px;
 }
 
-@media only screen and (max-width: 320px) {
-  #main {
-    overflow: hidden;
-    width: 320px;
-  }
+#container {
+  float: left;
+  width: 600px;
 }
 
-@media only screen and (min-width: 321px) {
-  #container {
-    float: left;
-    width: 600px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  #container {
-    float: left;
-    width: 320px;
-  }
-}
-
-@media only screen and (min-width: 321px) {
-  #sidebar {
-    float: right;
-    width: 160px;
-    padding: 20px;
-    margin: 0 20px 20px;
-    border: 2px solid #666;
-    /*padding や border に依存しない width, height 指定*/
-    -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  #main-navi,
-  #sub-nav
-  {
-    width: 260px;
-    margin: 0 20px 30px;
-    padding: 0 20px;
-    border: 2px solid #666;
-
-    -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-}
-
-.logo {
-  width: 202px;
-  height: 30px;
-  background: url('img/header_logo.png');
-  background-repeat: no-repeat;
-}
-
-@media only screen and (min-width: 321px) {
-  ul {
-    list-style-type: none;
-    margin-left: -40px;
-    font-weight: bold;
-    margin-bottom: 50px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  ul {
-    list-style-type: none;
-    margin-left: -40px;
-    font-weight: bold;
-  }
-}
-
-/*floatプロパティを解除*/
-.clearfix:after {
-  clear: both;
-  display: block;
-  content: '';
+#sidebar {
+  float: right;
+  width: 160px;
+  padding: 20px;
+  margin: 0 20px 20px;
+  border: 2px solid #666;
+  /*padding や border に依存しない width, height 指定*/
+  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* --------------------------------------------------
@@ -128,28 +72,11 @@ main-img
   width: 600x;
 }
 
-@media only screen and (max-width: 320px) {
-  .main-img {
-    padding-left: 5px;
-  }
-}
-
-@media only screen and (min-width: 321px) {
-  .img-box {
+.img-box {
     position: relative;
     float: left;
     width: 250px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
     margin: 0 20px 40px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .img-box {
-    position: relative;
-    float: left;
-    width: 250px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
-    margin: 0 20px 20px;
-  }
 }
 
 .cover {
@@ -202,38 +129,16 @@ main-img
 /* --------------------------------------------------
 profile
 -------------------------------------------------- */
-@media only screen and (min-width: 321px) {
-  .profile {
+
+.profile {
     margin: 0 20px 50px;
   }
-}
 
-@media screen and (max-width: 320px) {
-  .profile {
-    margin: 0 20px 30px;
-  }
-}
-
-@media only screen and (min-width: 321px) {
-  .profile-contents {
-    /*overflow: hidden;*/
-    width: 495px;
-    padding: 40px 20px;
-    border: 2px solid #333;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .profile-contents {
-    /*overflow: hidden;*/
-    width: 260px;
-    padding: 10px 10px 10px 10px;
-    border: 2px solid #333;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  }
+.profile-contents {
+  /*overflow: hidden;*/
+  width: 495px;
+  padding: 40px 20px;
+  border: 2px solid #333;
 }
 
 .profile-img {
@@ -250,39 +155,96 @@ profile
   padding-right: 5px;
 }
 
-
-@media only screen and (min-width: 321px) {
-  .profile-txt {
-    float: right;
-    width: 350px;
-    font-size: 12px;
-    line-height: 1.5; /*文字サイズ×1.5倍の高さを指定*/
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .profile-txt {
-    float: right;
-    width: 120px;
-    font-size: 12px;
-    line-height: 1.5; /*文字サイズ×1.5倍の高さを指定*/
-  }
+.profile-txt {
+  float: right;
+  width: 350px;
+  font-size: 12px;
+  line-height: 1.5; /*文字サイズ×1.5倍の高さを指定*/
 }
 
 /* --------------------------------------------------
 sidebar 
 -------------------------------------------------- */
+
+#sidebar {
+  float: right;
+  width: 160px;
+  padding: 20px;
+  margin: 0 20px 20px;
+  border: 2px solid #666;
+  /*padding や border に依存しない width, height 指定*/
+  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .line-box {
    border-bottom: 1px solid #666;
 }
 
-@media only screen and (min-width: 321px) {
-  .link-img img{
-    margin-bottom: 15px;
-  }
+.link-img img{
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 320px) {
+  .sp{
+    display:block;
+  }
+  .pc{
+    display:none;
+  }
+
+  ul {
+     margin: 0 0 20px -40px;
+  }
+
+  #main {
+    width: 320px;
+  }
+
+  #container {
+    width: 320px;
+  }
+
+  #main-navi,
+  #sub-nav
+  {
+    width: 260px;
+    margin: 0 20px 30px;
+    padding: 0 20px;
+    border: 2px solid #666;
+
+    -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  .main-img {
+    padding-left: 5px;
+  }
+
+  .img-box {
+    margin: 0 20px 20px;
+  }
+
+  .profile {
+    margin: 0 20px 30px;
+  }
+
+  .profile-contents {
+    /*overflow: hidden;*/
+    width: 260px;
+    padding: 10px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  }
+
+  .profile-txt {
+    width: 120px;
+  }
+
   .link-img{
     text-align: center;
     margin-bottom: 20px;
