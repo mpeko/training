@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+body{
+     font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+/*floatプロパティを解除*/
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 0 50px -40px;
+  font-weight: bold;
+}
+
+#wrapper {
+  width: 800px;
+  margin-right: auto;
+  margin-left : auto;
+}
+
+footer {
+ text-align: center;
+}
+
+.header {
+    color: #053c66;
+}
+
+
+.main-img {
+    position: relative;
+    float: left;
+    width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  width: 800px;
+  height: 474px;
+  background-color: #000;
+  opacity: .5;
+}
+
+.sub-img {
+    position: absolute;
+    top: 140px;
+    left: 330px;
+    width: 170px;
+    height: 170px;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 44px;
+    padding: 10px 0 5px 20px;
+    background-color: #053c66;
+
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.text1 {
+    position: absolute;
+    top: 340px;
+    left: 260px;
+    width: 300px;
+    height: 30px;
+    /*background-color: #053c66;*/
+    color: #fff;
+    font-size: 22px;
+}
+
+.text2 {
+    position: absolute;
+    top: 400px;
+    left: 215px;
+    width: 370px;
+    /*height: 30px;*/
+    background-color: #fff;
+    color: #053c66;
+}
+
+.section-h-box{
+    text-align: center;
+    width: 800px;
+}
+
+.section-h{
+    width: 46px;
+    /*上下ボーダー*/
+    padding: 5px 20px 5px 15px;
+    border: solid #053c66;
+    border-width:2px 0 2px 0;
+    font-size: 22px;
+    color: #053c66;
+}
+
+.section-hh{
+    /*position: absolute;
+    top: 55px;
+    left: 80px;*/
+    width: 46px;
+    /*上下ボーダー*/
+    padding: 5px 20px 5px 15px;
+    border: solid #fff ;
+    border-width:2px 0 2px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.aaa {
+    text-align: center;
+    color: #053c66;
+}
+
+
+
+#about {
+    padding: 40px 0;
+    text-align: center;
+    color: #053c66;
+}
+
+#about img{
+    margin: 40px 0;
+}
+
+.about-txt{
+    margin: 0 20px 40px 20px;
+    text-align: left;
+}
+
+
+
+#skill {
+    background-color: #053c66;
+    color: #fff;
+}
+
+/*.skill-txt{
+    margin: 0 20px 40px 20px;
+}*/
+
+/*.skill-img-box {
+    float: left;
+    width: 250px;*/
+    /*float を指定した時は width をつける癖をつけておたほうがよい*/
+    /*margin: 0 20px 40px;*/
+/*}*/
+
+#work {
+    background-color: #fff;
+    color: #053c66;
+}
+
+.work-txt{
+    margin: 0 20px 40px 20px;
+}
+
+#contact {
+    background-color: #053c66;
+    color: #fff;
+    text-align: center;
+}
+
+.contact-txt{
+    margin: 0 20px 40px 20px;
+}
