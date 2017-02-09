@@ -11,10 +11,32 @@ body{
   content: '';
 }
 
-ul {
-  list-style-type: none;
-  margin: 0 0 50px -40px;
-  font-weight: bold;
+.heading-box {
+    margin: 0 0 60px 0;
+}
+
+.heading {
+    width: 70px;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+.about-heading,
+.work-heading {
+    /*上下ボーダー*/
+    padding: 5px 20px 5px 15px;
+    border: solid #053c66;
+    border-width:2px 0 2px 0;
+    color: #053c66;
+}
+
+.skill-heading,
+.contact-heading {
+    /*上下ボーダー*/
+    padding: 5px 20px 5px 15px;
+    border: solid #fff;
+    border-width:2px 0 2px 0;
+    color: #fff;
 }
 
 #wrapper {
@@ -23,22 +45,17 @@ ul {
   margin-left : auto;
 }
 
-footer {
- text-align: center;
-}
 
-.header {
+/* --------------------------------------------------
+header
+-------------------------------------------------- */
+header {
+    height: 474px;
     color: #053c66;
-}
-
-
-.main-img {
     position: relative;
-    float: left;
-    width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
 }
 
-.cover {
+header .cover {
   position: absolute;
   top: 0;
   width: 800px;
@@ -47,7 +64,7 @@ footer {
   opacity: .5;
 }
 
-.sub-img {
+header .service_icon {
     position: absolute;
     top: 140px;
     left: 330px;
@@ -55,7 +72,7 @@ footer {
     height: 170px;
 }
 
-.logo {
+header .logo {
     position: absolute;
     top: 0;
     left: 0;
@@ -69,110 +86,141 @@ footer {
             box-sizing: border-box;
 }
 
-.text1 {
+header .main-txt {
     position: absolute;
-    top: 340px;
+    top: 300px;
     left: 260px;
     width: 300px;
     height: 30px;
-    /*background-color: #053c66;*/
     color: #fff;
     font-size: 22px;
 }
 
-.text2 {
+header .sub-txt {
     position: absolute;
-    top: 400px;
+    top: 350px;
     left: 215px;
     width: 370px;
-    /*height: 30px;*/
     background-color: #fff;
     color: #053c66;
 }
 
-.section-h-box{
-    text-align: center;
-    width: 800px;
-}
-
-.section-h{
-    width: 46px;
-    /*上下ボーダー*/
-    padding: 5px 20px 5px 15px;
-    border: solid #053c66;
-    border-width:2px 0 2px 0;
-    font-size: 22px;
-    color: #053c66;
-}
-
-.section-hh{
-    /*position: absolute;
-    top: 55px;
-    left: 80px;*/
-    width: 46px;
-    /*上下ボーダー*/
-    padding: 5px 20px 5px 15px;
-    border: solid #fff ;
-    border-width:2px 0 2px 0;
-    font-size: 22px;
-    color: #fff;
-}
-
-.aaa {
-    text-align: center;
-    color: #053c66;
-}
-
-
-
+/* --------------------------------------------------
+about
+-------------------------------------------------- */
 #about {
-    padding: 40px 0;
+    padding-top: 70px;
+    width: 800px;
+    height: 360px;
     text-align: center;
     color: #053c66;
 }
 
 #about img{
-    margin: 40px 0;
+    margin: 15px 0 40px;
 }
 
 .about-txt{
-    margin: 0 20px 40px 20px;
+    margin: 0 30px;
     text-align: left;
 }
 
-
-
+/* --------------------------------------------------
+skill
+-------------------------------------------------- */
 #skill {
-    background-color: #053c66;
+    padding-top: 70px;
+    width: 800px;
+    height: 420px;
+    text-align: center;
     color: #fff;
+    background-color: #053c66;
 }
 
-/*.skill-txt{
-    margin: 0 20px 40px 20px;
-}*/
-
-/*.skill-img-box {
+.skill-contents {
+    position: relative;
     float: left;
-    width: 250px;*/
-    /*float を指定した時は width をつける癖をつけておたほうがよい*/
-    /*margin: 0 20px 40px;*/
-/*}*/
+    width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+    margin-left: 40px;
+}
+
+.skill-content {
+    position: relative;
+    float: left;
+    width: 200px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+    margin: 0 20px 40px;
+}
+
+.skill-txt {
+    margin-top: 20px;
+    width: 180px;
+    font-size: 14px;
+}
+
+/* --------------------------------------------------
+work
+-------------------------------------------------- */
 
 #work {
-    background-color: #fff;
+    padding-top: 70px;
+    width: 800px;
+    height: 470px;
     color: #053c66;
 }
 
-.work-txt{
-    margin: 0 20px 40px 20px;
+.work-contents {
+    position: relative;
+    float: left;
+    width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+    margin-left: 10px;
 }
 
+.work-content {
+    position: relative;
+    float: left;
+    width: 350px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
+    margin: 0 20px 40px;
+    background-color: #053c66;
+}
+
+.work-line-box {
+    margin: 10px 15px 0;
+    padding-bottom: 5px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 18px;
+}
+
+.work-txt {
+    padding: 0 15px;
+    font-size: 12px;
+    color: #fff;
+}
+
+
+/* --------------------------------------------------
+contact
+-------------------------------------------------- */
 #contact {
+    padding: 70px 0 50px 0;
+    text-align: center;
+    width: 800px;
+    height: 200px;
     background-color: #053c66;
     color: #fff;
-    text-align: center;
 }
 
 .contact-txt{
-    margin: 0 20px 40px 20px;
+    margin-bottom: 30px;
+}
+
+/* --------------------------------------------------
+footer
+-------------------------------------------------- */
+footer {
+    padding-top: 20px;
+    height: 80px;
+    text-align: center;
+    color: #053c66;
 }
