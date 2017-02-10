@@ -2,6 +2,8 @@
 
 body{
      font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+     margin: 0;
+     padding: 0;
 }
 
 .sp{
@@ -187,6 +189,13 @@ sidebar
 }
 
 @media only screen and (max-width: 320px) {
+
+  #wrapper {
+    width: 100%;
+    margin-right: auto;
+    margin-left : auto;
+  }
+
   .sp{
     display:block;
   }
@@ -225,6 +234,16 @@ sidebar
 
   .img-box {
     margin: 0 20px 20px;
+  }
+
+  .img-box img{
+    width: 70%;
+    height: 70%;
+  }
+
+  .cover {
+    width: 70%;
+    height: 70%;
   }
 
   .profile {
