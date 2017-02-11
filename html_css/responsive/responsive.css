@@ -192,8 +192,8 @@ sidebar
 
   #wrapper {
     width: 100%;
-    margin-right: auto;
-    margin-left : auto;
+    margin-right: 0;
+    margin-left : 0;
   }
 
   .sp{
@@ -208,20 +208,24 @@ sidebar
   }
 
   #main {
-    width: 320px;
+    width: 96%;
+    margin: 0 2%;
+    padding: 0;
   }
 
   #container {
-    width: 320px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   #main-navi,
   #sub-nav
   {
-    width: 260px;
-    margin: 0 20px 30px;
-    padding: 0 20px;
+    width: 96%;
+    margin: 20px 2%;
     border: 2px solid #666;
+    padding: 10px 10px;
 
     -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -229,43 +233,72 @@ sidebar
   }
 
   .main-img {
-    padding-left: 5px;
+    width: 100%;
+    margin: 0;
   }
 
   .img-box {
-    margin: 0 20px 20px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
   }
 
   .img-box img{
-    width: 70%;
-    height: 70%;
+    width: 90%;
+    margin:0 5%;
   }
 
-  .cover {
-    width: 70%;
-    height: 70%;
+  .text-box1 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 46px;
+    height: 20px;
+  }
+
+  .text-box2 {
+    left: 0;
+    width: 55px;
   }
 
   .profile {
-    margin: 0 20px 30px;
+    width: 100%;
+    margin: 0;
   }
 
   .profile-contents {
-    /*overflow: hidden;*/
-    width: 260px;
-    padding: 10px;
+    width: 100%;
+    padding: 0;
+    min-width: 250px;/*最小幅*/
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
           box-sizing: border-box;
   }
 
+  .profile-img{
+    width: 45%;
+    padding: 10px 0 0 10px;
+  }
+
+  .profile-img-sp{
+    width: 100%;
+  }
+
+  .profile-icon {
+    margin: 10px 0 0 5px;
+    width: 100%;
+  }
+
   .profile-txt {
-    width: 120px;
+    width: 45%;
+    padding: 10px 10px 10px 0;
   }
 
   .link-img{
-    text-align: center;
-    margin-bottom: 20px;
+    width: 120px;
+    margin: 0 auto;
   }
 }
