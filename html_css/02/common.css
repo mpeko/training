@@ -2,6 +2,8 @@
 
 body{
      font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+     margin: 0;
+     padding: 0;
 }
 
 /*floatプロパティを解除*/
@@ -19,64 +21,42 @@ body{
     width: 70px;
     margin: 0 auto;
     font-size: 22px;
+    padding: 5px 20px 5px 15px;
 }
 
-.about-heading,
-.work-heading {
+.heading-blue {
     /*上下ボーダー*/
-    padding: 5px 20px 5px 15px;
-    border: solid #053c66;
-    border-width:2px 0 2px 0;
+    border-top: 1px solid #053c66;
+    border-bottom: 1px solid #053c66;
     color: #053c66;
 }
 
-.skill-heading,
-.contact-heading {
+.heading-white {
     /*上下ボーダー*/
-    padding: 5px 20px 5px 15px;
-    border: solid #fff;
-    border-width:2px 0 2px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
     color: #fff;
 }
 
+.section-blue {
+    width: 100%;
+    background-color: #053c66;
+}
+
+.section-white {
+    width: 100%;
+}
+
 #wrapper {
-  width: 800px;
-  margin-right: auto;
-  margin-left : auto;
+  width: 100%;
 }
 
 
 /* --------------------------------------------------
 header
 -------------------------------------------------- */
-header {
-    height: 474px;
-    color: #053c66;
-    position: relative;
-}
-
-header .cover {
-  position: absolute;
-  top: 0;
-  width: 800px;
-  height: 474px;
-  background-color: #000;
-  opacity: .5;
-}
-
-header .service_icon {
-    position: absolute;
-    top: 140px;
-    left: 330px;
-    width: 170px;
-    height: 170px;
-}
-
-header .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 800px;
+.logo {
+    width: 100%;
     height: 44px;
     padding: 10px 0 5px 20px;
     background-color: #053c66;
@@ -86,7 +66,41 @@ header .logo {
             box-sizing: border-box;
 }
 
-header .main-txt {
+
+/* --------------------------------------------------
+main
+-------------------------------------------------- */
+.section-main {
+    background: url('img/head_bg.jpg');
+    background-repeat: no-repeat;
+    background-size:100% auto;
+}
+
+#main {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    height: 474px;
+}
+
+#main .cover {
+  position: absolute;
+  top: 0;
+  width: 800px;
+  height: 474px;
+  background-color: #000;
+  opacity: .5;
+}
+
+#main .service_icon {
+    position: absolute;
+    top: 140px;
+    left: 330px;
+    width: 170px;
+    height: 170px;
+}
+
+#main .main-txt {
     position: absolute;
     top: 300px;
     left: 260px;
@@ -96,7 +110,7 @@ header .main-txt {
     font-size: 22px;
 }
 
-header .sub-txt {
+#main .sub-txt {
     position: absolute;
     top: 350px;
     left: 215px;
@@ -109,6 +123,7 @@ header .sub-txt {
 about
 -------------------------------------------------- */
 #about {
+    margin: 0 auto;
     padding-top: 70px;
     width: 800px;
     height: 360px;
@@ -129,6 +144,7 @@ about
 skill
 -------------------------------------------------- */
 #skill {
+    margin: 0 auto;
     padding-top: 70px;
     width: 800px;
     height: 420px;
@@ -138,14 +154,12 @@ skill
 }
 
 .skill-contents {
-    position: relative;
     float: left;
     width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
     margin-left: 40px;
 }
 
 .skill-content {
-    position: relative;
     float: left;
     width: 200px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
     margin: 0 20px 40px;
@@ -160,23 +174,22 @@ skill
 /* --------------------------------------------------
 work
 -------------------------------------------------- */
-
 #work {
+    margin: 0 auto;
     padding-top: 70px;
     width: 800px;
     height: 470px;
     color: #053c66;
+    text-align: center;
 }
 
 .work-contents {
-    position: relative;
     float: left;
     width: 800px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
     margin-left: 10px;
 }
 
 .work-content {
-    position: relative;
     float: left;
     width: 350px;/*float を指定した時は width をつける癖をつけておたほうがよい*/
     margin: 0 20px 40px;
@@ -194,6 +207,7 @@ work
 
 .work-txt {
     padding: 0 15px;
+    text-align: left;
     font-size: 12px;
     color: #fff;
 }
@@ -203,11 +217,12 @@ work
 contact
 -------------------------------------------------- */
 #contact {
+    margin: 0 auto;
     padding: 70px 0 50px 0;
     text-align: center;
     width: 800px;
     height: 200px;
-    background-color: #053c66;
+    /*background-color: #053c66;*/
     color: #fff;
 }
 
