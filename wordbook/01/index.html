@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>単語帳　new</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/common-model.js"></script>
+    <script type="text/javascript" src="js/common-view.js"></script>
+    <script type="text/javascript" src="js/wordbooks-view.js"></script>
+    <script type="text/javascript" src="js/wordbook-view.js"></script>
+    <script type="text/javascript" src="js/lesson-view.js"></script>
+    <script type="text/javascript" src="js/test-view.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+
+    <!-- header -->
+    <header id="header">
+        <div class="title">単語帳一覧</div>
+    </header>
+    <!-- /header -->
+
+    <!-- 単語帳一覧 --> 
+    <section class="wordBooks js-wordBooksView">
+
+        <div class="js-list">
+            <!--<ul>
+                <li>
+                    <input type="button" value="練習" class="js-bookNameEditBtn">
+                    <input type="button" value="テスト" class="js-wordEditBtn">
+                    <input type="button" value="編集" class="js-selectQuestionBtn">
+                    果物
+                </li>
+                <li>
+                    <input type="button" value="練習" class="js-bookNameEditBtn">
+                    <input type="button" value="テスト" class="js-wordEditBtn">
+                    <input type="button" value="編集" class="js-selectQuestionBtn">
+                    野菜
+                </li>
+            </ul>-->
+        </div>
+
+        <div class="js-wordBooksAdd">
+            単語帳追加　画面
+        </div>
+
+    </section>
+    <!-- / 単語帳一覧 -->
+
+    <!-- 単語帳編集 --> 
+    <section class="wordBooks js-wordBookView">
+
+        <div class="main">
+            <input type="button" value="< 戻る" class="js-backBtn">
+            <div class="">
+                <input type="button" value="削除">
+                <input type="button" value="編集">
+                果物
+            </div>
+            <div class="js-list">
+                <ul>
+                    <li>
+                        <input type="button" value="削除">
+                        <input type="button" value="編集">
+                        りんご / Apple 
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="js-wordBookNameEdit">
+            単語帳名編集　画面
+        </div>
+
+
+        <div class="js-wordBookEdit">
+            単語編集　画面
+        </div>
+
+
+        <div class="js-wordBookAdd">
+            単語追加　画面
+        </div>
+
+
+    </section>
+    <!-- / 単語帳編集 -->
+
+
+    <!-- 練習 --> 
+    <section class="wordBooks js-lessonView">
+        <input type="button" value="< 戻る" class="js-backBtn">
+        練習　画面
+    </section>
+    <!-- / 練習 -->
+
+
+    <!-- テスト -->
+    <section class="wordBooks js-testView">
+        <input type="button" value="< 戻る" class="js-backBtn">
+
+        <div class="js-test">テスト</div>
+
+        <div class="js-result">結果</div>
+
+    </section>
+    <!-- / テスト -->
+
+
+</body>
+</html>
