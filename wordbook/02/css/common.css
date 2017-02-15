@@ -81,3 +81,27 @@ wordBooks
     margin-left: 0;
 }
 
+
+/* --------------------------------------------------
+lesson
+-------------------------------------------------- */
+
+
+
+
+.wordCardBox {
+    width: 200px;
+    height: 80px;
+    background-color: #999;
+}
+
+.meaningCardBox {
+    width: 200px;
+    height: 80px;
+    background-color: #ddd;
+}
+
+.topCardBtn {
+    float: right;
+}
+

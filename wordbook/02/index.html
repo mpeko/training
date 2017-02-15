@@ -31,8 +31,8 @@
             <div class="js-list">
                 <!--<ul>
                     <li>
-                        <input type="button" value="練習" class="js-bookNameEditBtn">
-                        <input type="button" value="テスト" class="js-selectQuestionBtn">
+                        <input type="button" value="練習" class="js-lessonBtn">
+                        <input type="button" value="テスト" class="js-testBtn">
                         果物
                     </li>
                 </ul>-->
@@ -130,7 +130,29 @@
 
     <!-- 練習 --> 
     <section class="wordBooks js-lessonView">
-        <input type="button" value="< 戻る" class="js-backBtn">
+        <input type="button" value="< 単語帳一覧" class="js-backBtn">
+        <p class="js-wordbookName"></p>
+        <div align="center">
+            <div class="js-cards">
+                <div class="js-wordCardBox wordCardBox">
+                    <span class="js-wordCard"></span>
+                </div>
+                <div class="js-meaningCardBox meaningCardBox">
+                    <input type="button" value="答えを見る" class="js-answerBtn">
+                    <span class="js-meaningCard"></span>
+                </div>
+            </div>
+            <div style="margin: 10px;">
+                <input type="button" value="<戻る" class="js-prevBtn">
+                <input type="button" value="進む>" class="js-nextBtn">
+            </div>
+            <div><span class="js-currentNum"></span> / <span class="js-totalNum"></span></div>
+        </div>
+        <div>
+            <input type="button" value="ランダム" class="js-randomBtn">
+            <input type="button" value="出題と答えを逆にする" class="js-reverseBtn">
+        </div>
+        <input type="button" value="最初から始める" class="js-topCardBtn topCardBtn">
     </section>
     <!-- / 練習 -->
 

@@ -34,37 +34,35 @@ $(function(){
             updateWordBooksMainList();
             updateWordBooksEditList();
             
-            this.onWordBooksAddBtn();
-            this.onAddBtn();
-            this.onEditModeBtn();
-            this.onEditBtn();
-            this.onDeleteBtn();
-            this.onLessonBtn();
-            this.onTestBtn();
-            this.onBackBtn();
+            this.handleEvent();
 
             updateHeaderText('単語帳一覧');
 	    },
-        onWordBooksAddBtn: function() {
-            var addBtn = this.$el.find('.js-wordBooksAddBtn');
+        handleEvent: function() {
+            var wordBooksAddBtn = this.$el.find('.js-wordBooksAddBtn');
+            var addBtn = this.$el.find('.js-addBtn');
+            var editModeBtn = this.$el.find('.js-editModeBtn');
+            var editBtn = this.$el.find('.js-editBtn');
+            var deleteBtn = this.$el.find('.js-wordBooksEdit .js-deleteBtn');
+            var lessonBtn = this.$el.find('.js-lessonBtn');
+            var testBtn = this.$el.find('.js-testBtn');
+            var backBtn = this.$el.find('.js-backBtn');
             var self = this;
-            addBtn.click(function(){
+            wordBooksAddBtn.click(function(){
                 self.$wordBooksMain.addClass('hide');
                 self.$wordBooksAdd.removeClass('hide');
 
                 updatePankuzu('単語帳一覧 > 単語帳追加');
                 updateHeaderText('単語帳追加');
             });
-        },
-        onAddBtn: function() {
-            var addBtn = this.$el.find('.js-addBtn');
-            var self = this;
             addBtn.click(function(){
                 // 単語帳追加する
                 var name = self.$el.find('.js-bookNameTxt').val();
-                self.displayErrorBookName(name);
                 var check = wordBookObj.validWordBooks(name);
-                if (!check) return;
+                if (!check) {
+                    self.displayErrorBookName(name);
+                    return;
+                }
          
                 self.data.addBookName(name);
                 self.$el.find('.js-bookNameTxt').val('');
@@ -77,10 +75,6 @@ $(function(){
                 updatePankuzu('単語帳一覧');
                 updateHeaderText('単語帳一覧');
             });
-        },
-        onEditModeBtn: function() {
-            var editModeBtn = this.$el.find('.js-editModeBtn');
-            var self = this;
             editModeBtn.click(function(){
 
                 // 単語帳一覧編集へ
@@ -90,10 +84,6 @@ $(function(){
                 updatePankuzu('単語帳一覧 > 単語帳一覧編集');
                 updateHeaderText('単語帳一覧編集');
             });
-        },
-        onEditBtn: function() {
-            var editBtn = this.$el.find('.js-editBtn');
-            var self = this;
             editBtn.click(function(){
 
                 // 単語帳編集へ
@@ -103,10 +93,6 @@ $(function(){
                 updatePankuzu('単語帳一覧 > 単語帳一覧編集 > 単語帳編集');
                 updateHeaderText('単語帳編集');
             });
-        },
-        onDeleteBtn: function() {
-            var deleteBtn = this.$el.find('.js-wordBooksEdit .js-deleteBtn');
-            var self = this;
             deleteBtn.click(function(){
                 // 単語帳削除
                 var index = deleteBtn.index(this);
@@ -120,22 +106,24 @@ $(function(){
                 updatePankuzu('単語帳一覧');
                 updateHeaderText('単語帳一覧');
             });
-        },
-        onLessonBtn: function() {
-            var lessonBtn = this.$el.find('.js-lessonBtn');
-            var self = this;
             lessonBtn.click(function(){
                 // 練習画面へ
+
+                // 問題の選択
+                var index = self.$el.find('.js-lessonBtn').index(this);
+                wordBookObj.currentLessonBook = wordBookObj.wordBooks[index];
+                elementObj.$lessonView.find('.js-wordbookName').text(wordBookObj.currentLessonBook.name);
+
+                if(wordBookObj.wordBooks[index].wordBook[0] != undefined){
+                    inputLessonObj.startLesson();
+                }
+                
                 self.$el.addClass('hide');
                 elementObj.$lessonView.removeClass('hide');
 
                 updatePankuzu('練習');
                 updateHeaderText('練習');
             });
-        },
-        onTestBtn: function() {
-            var testBtn = this.$el.find('.js-testBtn');
-            var self = this;
             testBtn.click(function(){
                 // テスト画面へ
                 self.$el.addClass('hide');
@@ -144,10 +132,6 @@ $(function(){
                 updatePankuzu('テスト');
                 updateHeaderText('テスト');
             });
-        },
-        onBackBtn: function() {
-            var backBtn = this.$el.find('.js-backBtn');
-            var self = this;
             backBtn.click(function(){
                 // 共通・戻る
                 self.resetToMain();
@@ -173,10 +157,7 @@ $(function(){
         },
         resetBtn: function() {
             // 配列を操作したときなどにボタンが効かなくなるので再度設定
-            this.onEditBtn();
-            this.onDeleteBtn();
-            this.onLessonBtn();
-            this.onTestBtn();
+            this.handleEvent();
         },
         resetErrorMsg: function() {
             this.$el.find('.js-errorMsg').text('');
@@ -233,15 +214,15 @@ $(function(){
             this.$wordBookUpdate.addClass('hide');
             this.$wordBookAdd.addClass('hide');
 
-            this.onMainAddBtn();
-            this.onBookNameUpdateBtn();
-            this.onUpdateBtn();
-            this.onAddBtn();
-            this.onMainBackBtn();
-            this.onBackBtn();
+            this.handleEvent();
 	    },
-        onMainAddBtn: function() {
+        handleEvent: function() {
             var mainAddBtn = this.$el.find('.js-mainAddBtn');
+            var bookNameUpdateBtn = this.$wordBookNameUpdate.find('.js-updateBtn');
+            var bookUpdateBtn = this.$wordBookUpdate.find('.js-updateBtn');
+            var addBtn = this.$wordBookAdd.find('.js-addBtn');
+            var mainBackBtn = this.$el.find('.js-mainBackBtn');
+            var backBtn = this.$el.find('.js-backBtn');
             var self = this;
             mainAddBtn.click(function(){
                 // 単語追加画面へ
@@ -251,17 +232,15 @@ $(function(){
                 updatePankuzu('単語帳一覧 > 単語帳一覧編集  > 単語帳編集  > 単語追加');
                 updateHeaderText('単語追加');
             });
-        },
-        onBookNameUpdateBtn: function() {
-            var updateBtn = this.$wordBookNameUpdate.find('.js-updateBtn');
-            var self = this;
-            updateBtn.click(function(){
+            bookNameUpdateBtn.click(function(){
 
                 // 単語帳名の更新
                 var text = self.$wordBookNameUpdate.find('.js-updateNameTxt').val();
-                self.displayErrorBookName(text);
                 var check = wordBookObj.validWordBooks(text);
-                if (!check) return;
+                if (!check) {
+                    self.displayErrorBookName(text);
+                    return;
+                }
    
                 wordBookObj.updateBookName(text);
                 self.$wordBookMain.find('.js-name').text(text);
@@ -273,11 +252,7 @@ $(function(){
 
                 self.resetToMain();
             });
-        },
-        onUpdateBtn: function() {
-            var updateBtn = this.$wordBookUpdate.find('.js-updateBtn');
-            var self = this;
-            updateBtn.click(function(){
+            bookUpdateBtn.click(function(){
 
                 // 単語更新
                 var word = self.$wordBookUpdate.find('.js-updateWordTxt').val();
@@ -296,10 +271,6 @@ $(function(){
                 
                 self.resetToMain();
             });
-        },
-        onAddBtn: function() {
-            var addBtn = this.$wordBookAdd.find('.js-addBtn');
-            var self = this;
             addBtn.click(function(){
                 // 単語を登録
                 var word = self.$wordBookAdd.find('.js-wordTxt').val();
@@ -317,11 +288,7 @@ $(function(){
 
                 self.resetToMain();
             });
-        },
-        onMainBackBtn: function() {
-            var backBtn = this.$el.find('.js-mainBackBtn');
-            var self = this;
-            backBtn.click(function(){
+            mainBackBtn.click(function(){
                 // 戻る
                 self.$el.addClass('hide');
                 elementObj.$wordBooksView.removeClass('hide');
@@ -329,10 +296,6 @@ $(function(){
                 updatePankuzu('単語帳一覧 > 単語帳一覧編集');
                 updateHeaderText('単語帳一覧編集');
             });
-        },
-        onBackBtn: function() {
-            var backBtn = this.$el.find('.js-backBtn');
-            var self = this;
             backBtn.click(function(){
                 // 共通・戻る
                 self.resetToMain();
@@ -431,14 +394,51 @@ $(function(){
     var inputLessonObj = {
         $el: elementObj.$lessonView,
         data: wordBookObj,
+        randomFlag: true,
+        reverseFlag: true,
+        randomArray: [],
         initialize: function() {
 
             this.$el.addClass('hide');
-            this.onBackBtn();
+            this.$el.find('.js-topCardBtn').addClass('hide');
+
+            this.handleEvent();
 	    },
-        onBackBtn: function() {
+        handleEvent: function() {
+            var answerBtn = this.$el.find('.js-answerBtn');
+            var prevBtn = this.$el.find('.js-prevBtn');
+            var nextBtn = this.$el.find('.js-nextBtn');
+            var topCardBtn = this.$el.find('.js-topCardBtn');
             var backBtn = this.$el.find('.js-backBtn');
+            var randomBtn = this.$el.find('.js-randomBtn');
+            var reverseBtn = this.$el.find('.js-reverseBtn');
             var self = this;
+            answerBtn.click(function(){
+                // 答えを見る
+                answerBtn.addClass('hide');
+                self.$el.find('.js-meaningCard').removeClass('hide');
+            });
+            prevBtn.click(function(){
+                // 戻る
+                var index = wordBookObj.getLessonWordIndex();
+                wordBookObj.setLessonWordIndex(index -= 1);
+                updateCardNum();
+                changeCard('prev');
+                changeCardBtn();
+            });
+            nextBtn.click(function(){
+                // 進む
+                var index = wordBookObj.getLessonWordIndex();
+                wordBookObj.setLessonWordIndex(index += 1);
+                updateCardNum();
+                changeCard('next');
+                changeCardBtn();
+            });
+            topCardBtn.click(function(){
+                // 最初から
+                topCardBtn.addClass('hide');
+                self.startLesson();
+            });
             backBtn.click(function(){
                 self.$el.addClass('hide');
                 elementObj.$wordBooksView.removeClass('hide');
@@ -446,8 +446,111 @@ $(function(){
                 updatePankuzu('単語帳一覧');
                 updateHeaderText('単語帳一覧');
             });
+            randomBtn.click(function(){
+                if(self.randomFlag){
+                    self.randomFlag = false;
+
+                    // ランダム用の配列生成
+                    var wordBooklength = wordBookObj.currentLessonBook.wordBook.length;
+                    for (var i = 0; i < wordBooklength; i++) {
+                        self.randomArray.push(i);
+                    }
+                    self.randomArray = getRandomArray(self.randomArray);
+
+                } else {
+                    self.randomFlag = true;
+                }
+                self.startLesson();
+            });
+            reverseBtn.click(function(){
+                if(self.reverseFlag){
+                    // meaning/word
+                    self.reverseFlag = false;
+                } else {
+                    // word/meaning
+                    self.reverseFlag = true;
+                }
+                self.startLesson();
+            });
+        },
+        startLesson: function() {
+            wordBookObj.setLessonWordIndex(0);
+            updateCardNum();
+            changeCardBtn();
+
+            var startIndex;
+
+            if(this.randomFlag){
+                startIndex = 0;
+            } else {
+                startIndex = this.randomArray[0];
+            }
+
+            if(this.reverseFlag){
+                this.$el.find('.js-wordCard').text(wordBookObj.currentLessonBook.wordBook[startIndex].word);
+                this.$el.find('.js-meaningCard').text(wordBookObj.currentLessonBook.wordBook[startIndex].meaning).addClass('hide');
+            } else {
+                this.$el.find('.js-wordCard').text(wordBookObj.currentLessonBook.wordBook[startIndex].meaning);
+                this.$el.find('.js-meaningCard').text(wordBookObj.currentLessonBook.wordBook[startIndex].word).addClass('hide');
+            }
+
+            this.$el.find('.js-answerBtn').removeClass('hide');
+            this.$el.find('.js-meaningCard').addClass('hide');
         }
     }
+
+    // カードの切り替え
+    var changeCard = function(btnType){
+
+        var currentIndex;
+
+        if(inputLessonObj.randomFlag){
+            currentIndex = wordBookObj.getLessonWordIndex();
+        } else {
+            currentIndex = inputLessonObj.randomArray[wordBookObj.getLessonWordIndex()];
+        }
+
+        if(inputLessonObj.reverseFlag){
+            elementObj.$lessonView.find('.js-wordCard').text(wordBookObj.currentLessonBook.wordBook[currentIndex].word);
+            elementObj.$lessonView.find('.js-meaningCard').text(wordBookObj.currentLessonBook.wordBook[currentIndex].meaning);
+        } else {
+            elementObj.$lessonView.find('.js-wordCard').text(wordBookObj.currentLessonBook.wordBook[currentIndex].meaning);
+            elementObj.$lessonView.find('.js-meaningCard').text(wordBookObj.currentLessonBook.wordBook[currentIndex].word);
+        }
+
+        if (btnType == 'prev'){
+            elementObj.$lessonView.find('.js-answerBtn').addClass('hide');
+            elementObj.$lessonView.find('.js-meaningCard').removeClass('hide');
+        } else if (btnType == 'next'){
+            elementObj.$lessonView.find('.js-answerBtn').removeClass('hide');
+            elementObj.$lessonView.find('.js-meaningCard').addClass('hide');
+        }
+    }
+
+    // ボタンの切り替え
+    var changeCardBtn = function(){
+        if(wordBookObj.getLessonWordIndex() == 0) {
+            elementObj.$lessonView.find('.js-prevBtn').addClass('hide');
+        } else {
+            elementObj.$lessonView.find('.js-prevBtn').removeClass('hide');
+        }
+
+        if(wordBookObj.getLessonWordIndex() == wordBookObj.currentLessonBook.wordBook.length-1) {
+            elementObj.$lessonView.find('.js-nextBtn').addClass('hide');
+            elementObj.$lessonView.find('.js-topCardBtn').removeClass('hide');
+        } else {
+            elementObj.$lessonView.find('.js-nextBtn').removeClass('hide');
+            elementObj.$lessonView.find('.js-topCardBtn').addClass('hide');            
+        }
+
+    }
+
+    var updateCardNum = function() {
+        elementObj.$lessonView.find('.js-currentNum').text(wordBookObj.getLessonWordIndex()+1);
+        elementObj.$lessonView.find('.js-totalNum').text(wordBookObj.currentLessonBook.wordBook.length);
+    }
+
+
 
     //-------------------------------------------------------------------------
     // テスト
@@ -458,9 +561,9 @@ $(function(){
         initialize: function() {
             this.$el.addClass('hide');
             this.$el.find('.js-result').addClass('hide');
-            this.onBackBtn();
+            this.handleEvent();
 	    },
-        onBackBtn: function() {
+        handleEvent: function() {
             var backBtn = this.$el.find('.js-backBtn');
             var self = this;
             backBtn.click(function(){
@@ -487,8 +590,21 @@ $(function(){
         $('.js-pankuzu span').text(text);
     }
 
+    // ランダムな配列
+    var getRandomArray = function(array){
+        var n = array.length, t, i;
+        while (n) {
+            i = Math.floor(Math.random() * n--);
+            t = array[n];
+            array[n] = array[i];
+            array[i] = t;
+        }
+        return array;
+    }
+
     inputWordBooksObj.initialize();
     inputWordBookObj.initialize();
     inputLessonObj.initialize();
     inputTestObj.initialize();
+
 });

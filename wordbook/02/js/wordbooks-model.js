@@ -34,8 +34,8 @@ var wordBookObj = {
     currentEditBook : undefined,            // 編集する単語帳
     updateBookNameIndex : 0,                // 編集する単語帳名のindex
     updateWordIndex : 0,                    // 編集する単語のindex
-    currentQuestionBook : undefined,        // 出題単語帳
-    questionWordIndex : 0,                  // 出題されている単語のindex
+    currentLessonBook : undefined,        // 出題単語帳
+    lessonWordIndex : 0,                  // 出題されている単語のindex
     // 単語帳（単語帳名）追加
     addBookName: function(text){
         this.wordBooks.push({"name": text, wordBook: []});
@@ -69,6 +69,14 @@ var wordBookObj = {
         this.currentEditBook.wordBook[this.updateWordIndex].word = text1;
         this.currentEditBook.wordBook[this.updateWordIndex].meaning = text2;
     },
+    // 練習単語index set
+    setLessonWordIndex: function(index){
+        this.lessonWordIndex = index;
+    },
+    // 練習単語index get
+    getLessonWordIndex: function(){
+        return this.lessonWordIndex;
+    },
     validWordBooks: function(bookName){
         if(bookName == ''){
             return false;
@@ -89,4 +97,4 @@ var wordBookObj = {
 }
 
 wordBookObj.currentEditBook = wordBookObj.wordBooks[0];
-wordBookObj.currentQuestionBook = wordBookObj.wordBooks[0];
+wordBookObj.currentLessonBook = wordBookObj.wordBooks[0];
