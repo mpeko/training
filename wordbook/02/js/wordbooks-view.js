@@ -2,8 +2,7 @@
     単語帳
 */
 
-var lessonBtn = '<input type="button" value="練習" class="js-lessonBtn">';
-var testBtn = '<input type="button" value="テスト" class="js-testBtn">';
+// TODO：保留
 var editBtn = '<input type="button" value="編集" class="js-editBtn">';
 var deleteBtn = '<input type="button" value="削除" class="js-deleteBtn">';
 
@@ -16,6 +15,29 @@ $(function(){
         $lessonView: $('.js-lessonView'),                  // 練習
         $testView: $('.js-testView'),                      // テスト
     }
+
+    function getWordData(){
+        return $.ajax({
+            url: 'data.json',
+            dataType: 'json',
+        });
+    }
+    // 初期データを取得する
+    getWordData().done(function(result) {
+
+        var resultLength = result.length;
+        for (var i = 0; i < resultLength; i++) {
+            var wordBooksLength = result[0].wordBooks.length;
+            for (var j = 0; j < wordBooksLength; j++) {
+                wordBookObj.wordBooks.push(result[0].wordBooks[j]);
+            }
+        }
+
+        inputWordBooksObj.initialize();
+        inputWordBookObj.initialize();
+        inputLessonObj.initialize();
+        inputTestObj.initialize();
+    });
 
     //-------------------------------------------------------------------------
     // 単語帳一覧
@@ -166,18 +188,38 @@ $(function(){
 
     // 単語帳一覧 メイン
     var updateWordBooksMainList = function(){
-        elementObj.$wordBooksView.find('.js-wordBooksMain ul').remove();
+        elementObj.$wordBooksView.find('.js-wordBooksMain ul li').remove();
         var wordBooks = wordBookObj.wordBooks;
-        var list = _.template("<ul>"+"<% _.each(wordBooks, function(item) { %>"+" <li><%= lessonBtn %> <%= testBtn %> <%= item.name %> </li>"+"<% }); %>"+"</ul>")({wordBooks: wordBooks});
-        elementObj.$wordBooksView.find(".js-wordBooksMain .js-list").append(list);
+
+        // テンプレートを取得
+        var template = $("#js-wordBooksMain-template").text();
+        // テンプレートを定義
+        var compiled = _.map(wordBooks, function(wordBooks) {
+            return _.template(template, wordBooks);
+        })
+        // テンプレート適用
+        $("#js-showWordBooksMain-template").html(compiled);
+
+        // elementObj.$wordBooksView.find('.js-wordBooksMain ul').remove();
+        // var wordBooks = wordBookObj.wordBooks;
+
+        // var list = _.template("<ul>"+"<% _.each(wordBooks, function(item) { %>"+" <li><%= lessonBtn %> <%= testBtn %> <%= item.name %> </li>"+"<% }); %>"+"</ul>")({wordBooks: wordBooks});
+        // elementObj.$wordBooksView.find(".js-wordBooksMain .js-list").append(list);
+
     }
 
     // 単語帳一覧 編集
     var updateWordBooksEditList = function(){
-        elementObj.$wordBooksView.find('.js-wordBooksEdit ul').remove();
+        elementObj.$wordBooksView.find('.js-wordBooksEdit ul li').remove();
         var wordBooks = wordBookObj.wordBooks;
-        var list = _.template("<ul>"+"<% _.each(wordBooks, function(item) { %>"+" <li><%= deleteBtn %> <%= editBtn %> <%= item.name %> </li>"+"<% }); %>"+"</ul>")({wordBooks: wordBooks});
-        elementObj.$wordBooksView.find(".js-wordBooksEdit .js-list").append(list);
+        // テンプレートを取得
+        var template = $("#js-wordBooksEdit-template").text();
+        // テンプレートを定義
+        var compiled = _.map(wordBooks, function(wordBooks) {
+            return _.template(template, wordBooks);
+        })
+        // テンプレート適用
+        $("#js-showWordBooksEdit-template").html(compiled);
     }
 
     elementObj.$wordBooksView.each(function(){
@@ -265,6 +307,18 @@ $(function(){
                 wordBookObj.updateWord(word, meaing);
 
                 self.$el.find('.js-list > ul > li:eq('+wordBookObj.updateWordIndex+')').html(deleteBtn+' '+editBtn+' '+word +' : '+ meaing);
+
+                // TODO：保留
+                // elementObj.$wordBooksView.find('.js-wordBooksEdit ul li').remove();
+                // var wordBook = wordBookObj.wordBooks;
+                // // テンプレートを取得
+                // var template = $("#js-wordBookUpdate-template").text();
+                // // テンプレートを定義
+                // var compiled = _.map(wordBook, function(wordBook) {
+                //     return _.template(template, wordBook);
+                // })
+                // // テンプレート適用
+                // $("#js-showWordBookUpdate-template").html(compiled);
 
                 self.$wordBookUpdate.find('.js-updateWordTxt').val('');
                 self.$wordBookUpdate.find('.js-updateMeaningTxt').val('');
@@ -379,12 +433,18 @@ $(function(){
     var showWordBook = function(){
         elementObj.$wordBookView.each(function(){
             var $book = $(this);
-            $book.find('.js-list ul').remove();
-            
+            $book.find('.js-list ul li').remove();
             var wordBook = wordBookObj.currentEditBook.wordBook;
-            var list = _.template("<ul>"+"<% _.each(wordBook, function(item) { %>"+" <li><%= deleteBtn %> <%= editBtn %> <%= item.word %> : <%= item.meaning %></li>"+"<% }); %>"+"</ul>")({wordBook: wordBook});
 
-            $book.find('.js-list').append(list);
+            // テンプレートを取得
+            var template = $("#js-wordBookMain-template").text();
+            // テンプレートを定義
+            var compiled = _.map(wordBook, function(wordBook) {
+                return _.template(template, wordBook);
+            })
+            // テンプレート適用
+            $("#js-showWordBookMain-template").html(compiled);
+
         });
     }
 
@@ -587,7 +647,7 @@ $(function(){
 
     // パンくずリスト TODO：横スライドができるようになったら削除する
     var updatePankuzu = function(text){
-        $('.js-pankuzu span').text(text);
+        $('.js-pankuzu p').text(text);
     }
 
     // ランダムな配列
@@ -602,9 +662,5 @@ $(function(){
         return array;
     }
 
-    inputWordBooksObj.initialize();
-    inputWordBookObj.initialize();
-    inputLessonObj.initialize();
-    inputTestObj.initialize();
-
 });
+
