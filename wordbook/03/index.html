@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>単語帳</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script type="text/javascript" src="js/wordbooks-model.js"></script>
+    <script type="text/javascript" src="js/wordbooks-view.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+
+    <div id="wrapper">
+        <script type="text/template" id="js-wordBooksMain-template">
+            <li><span class="js-lessonBtn gray-btn lesson-btn">学習</span> <%= name %></li>
+        </script>
+
+        <script type="text/template" id="js-wordBooksEdit-template">
+            <li><input type="button" value="削除" class="js-deleteBtn"> <input type="button" value="編集" class="js-editBtn"> <%= name %></li>
+        </script>
+
+        <script type="text/template" id="js-wordBookMain-template">
+            <li><input type="button" value="削除" class="js-deleteBtn"> <input type="button" value="編集" class="js-editBtn"> <%= word %> : <%= meaning %></li>
+        </script>
+
+        <!-- TODO : -->
+        <!--<script type="text/template" id="js-wordBookUpdate-template">
+            <li><input type="button" value="削除" class="js-deleteBtn"><input type="button" value="編集" class="js-editBtn"> <%= word %> : <%= meaning %></li>
+        </script>-->
+
+        <!-- header -->
+        <header id="header">
+            <div class="title"></div>
+        </header>
+        <!-- /header -->
+
+        <section class="wordBooks pankuzu js-pankuzu">
+            <p>単語帳一覧</p>
+        </section>
+
+        <!-- 単語帳一覧 --> 
+        <section class="wordBooks js-wordBooksView">
+            
+            <div class="js-wordBooksMain">
+                <div class="js-list list">
+                    <ul id="js-showWordBooksMain-template"></ul>
+                    <!--<ul>
+                        <li>
+                            <input type="button" value="学習" class="js-lessonBtn">
+                            果物
+                        </li>
+                    </ul>-->
+                </div>
+                <span class="js-wordBooksAddBtn blue-btn book-add-btn">単語帳追加</span>
+                <span class="js-editModeBtn blue-btn edit-btn">編集</span>
+            </div>
+
+            <!-- 単語帳一覧 編集-->
+            <div class="js-wordBooksEdit">
+                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="js-list list">
+                    <ul id="js-showWordBooksEdit-template"></ul>
+                    <!--<ul>
+                        <li>
+                            <input type="button" value="削除" class="js-deleteBtn">
+                            <input type="button" value="編集" class="js-editBtn">
+                            果物
+                        </li>
+                    </ul>-->
+                </div>
+            </div>
+
+            <div class="js-wordBooksAdd">
+                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="content">
+                    <p>単語帳名<input type="text" size="30" class="js-bookNameTxt"></p>
+                    <input type="button" value="単語帳を登録" class="js-addBtn">
+                </div>
+                <p class="js-errorMsg"></p>
+            </div>
+
+        </section>
+        <!-- / 単語帳一覧 -->
+
+        <!-- 単語帳編集 --> 
+        <section class="wordBooks js-wordBookView">
+
+            <div class="js-wordBookMain">
+                <input type="button" value="< 戻る" class="js-mainBackBtn btn">
+                <div class="js-title">
+                    <input type="button" value="編集" class="js-editBtn">
+                    <span class="js-name"><span>
+                </div>
+                <div class="js-list list">
+                    <ul id="js-showWordBookMain-template"></ul>
+                    <!--<ul>
+                        <li>
+                            <input type="button" value="削除" class="js-deleteBtn">
+                            <input type="button" value="編集" class="js-editBtn">
+                            りんご / Apple 
+                        </li>
+                    </ul>-->
+                </div>
+                <input type="button" value="単語追加" class="js-mainAddBtn btn">
+            </div>
+
+            <div class="js-wordBookNameUpdate">
+                <input type="button" value="< 戻る" class="js-backBtn btn">
+                    <div>
+                        単語帳名 <input type="text" size="20" class="js-updateNameTxt">
+                        <input type="button" value="更新" class="js-updateBtn">
+                    </div>
+                    <p class="js-errorMsg"></p>
+            </div>
+
+            <div class="js-wordBookUpdate">
+                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="content">
+                    <p>
+                        単語 <input type="text" size="30" class="js-updateWordTxt">
+                    </p>
+                    <p>
+                        意味 <input type="text" size="30" class="js-updateMeaningTxt">
+                    </p>
+                    <p class="js-errorMsg"></p>
+                    <input type="button" value="更新" class="js-updateBtn">
+                </div>
+            </div>
+
+            <div class="js-wordBookAdd">
+                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="content">
+                    <p>
+                        単語 <input type="text" size="30" class="js-wordTxt">
+                    </p>
+                    <p>
+                        意味 <input type="text" size="30" class="js-meaningTxt">
+                    </p>
+                    <p class="js-errorMsg"></p>
+                    <input type="button" value="単語を登録" class="js-addBtn">
+                </div>
+            </div>
+
+        </section>
+        <!-- / 単語帳編集 -->
+
+
+        <!-- 学習 --> 
+        <section class="wordBooks js-lessonView">
+            <input type="button" value="< 単語帳一覧" class="js-backBtn">
+            <p class="js-wordbookName"></p>
+            <div align="center">
+                <div class="js-cards">
+                    <div class="js-wordCardBox word-cardbox">
+                        <span class="js-wordCardText"></span>
+                    </div>
+                    <div class="js-meaningCardBox meaning-cardbox">
+                        <input type="button" value="答えを見る" class="js-answerBtn">
+                        <span class="js-meaningCardText"></span>
+                    </div>
+                </div>
+                <div style="margin: 10px;">
+                    <input type="button" value="< 戻る" class="js-prevBtn">
+                    <input type="button" value="進む >" class="js-nextBtn">
+                </div>
+                <div><span class="js-currentNum"></span> / <span class="js-totalNum"></span></div>
+            </div>
+            <div>
+                <input type="button" value="ランダム" class="js-randomBtn">
+                <input type="button" value="出題と答えを逆にする" class="js-reverseBtn">
+            </div>
+            <input type="button" value="最初から始める" class="js-topCardBtn top-cardBtn">
+        </section>
+        <!-- / 学習 -->
+
+        <!--<div class="popup">
+            <div class="base"></div>
+            <div class="popup-content">
+                <div class="text-area">
+                    <div class="js-text text">
+                        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                    </div>
+                </div>
+                <div class="js-btnGroup btn-group">
+                    <input type="button" value="aaa" class="js-aaaBtn">
+                    <input type="button" value="bbb" class="js-bbbBtn">
+                </div>
+            </div>
+        </div>-->
+    
+    </div>
+</body>
+</html>
