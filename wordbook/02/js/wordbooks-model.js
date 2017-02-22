@@ -9,6 +9,7 @@ var wordBookObj = {
                 word: '単語を入力してください。',
                 meaning: '意味を入力してください。'
     }],
+    pankuzuTopName: '単語帳一覧',
     currentEditBook : undefined,            // 編集する単語帳
     updateBookNameIndex : 0,                // 編集する単語帳名のindex
     updateWordIndex : 0,                    // 編集する単語のindex
@@ -17,6 +18,7 @@ var wordBookObj = {
     // 単語帳（単語帳名）追加
     addBookName: function(text){
         this.wordBooks.push({"name": text, wordBook: []});
+        this.setLocal();
     },
     // 編集する単語帳名のindex
     editBookNameIndex: function(index){
@@ -25,6 +27,7 @@ var wordBookObj = {
     // 単語帳の削除
     deleteBook: function(index){
        this.wordBooks.splice(index,1);
+       this.setLocal();
     },
     // 単語の削除
     deleteWord: function(index){
@@ -33,10 +36,12 @@ var wordBookObj = {
     // 単語帳名更新
     updateBookName: function(text){
        this.currentEditBook.name = text;
+       this.setLocal();
     },
     // 単語追加
     addWord: function(text1, text2){
        this.currentEditBook.wordBook.push({ word: text1, meaning: text2 });
+       this.setLocal();
     },
     // 編集する単語のindex
     editWordIndex: function(index){
@@ -46,6 +51,7 @@ var wordBookObj = {
     updateWord: function(text1, text2){
         this.currentEditBook.wordBook[this.updateWordIndex].word = text1;
         this.currentEditBook.wordBook[this.updateWordIndex].meaning = text2;
+        this.setLocal();
     },
     // 練習単語index set
     setLessonWordIndex: function(index){
@@ -71,6 +77,14 @@ var wordBookObj = {
             flag = true;
         }
         return flag;
+    },
+    setLocal: function(){
+        localStorage.setItem('wordbook', JSON.stringify(this.wordBooks));
+    },
+    getLocal: function(){
+        if (localStorage.getItem('wordbook') != null){
+            this.wordBooks = JSON.parse(localStorage.getItem('wordbook'));
+        }
     }
 }
 

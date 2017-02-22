@@ -1,24 +1,82 @@
 [{
     "wordBooks": [{
                 "name": "Fruit / 果物",
-                "wordBook": [{"word": "apple", "meaning": "りんご"},
-                {"word": "peach", "meaning": "もも"},
-                {"word": "grape", "meaning": "ぶどう"},
-                {"word": "strawberry", "meaning": "いちご"}
+                "wordBook": [
+                    {"word": "apple", "meaning": "りんご"},
+                    {"word": "peach", "meaning": "もも"},
+                    {"word": "grape", "meaning": "ぶどう"},
+                    {"word": "strawberry", "meaning": "いちご"},
+                    {"word": "orange", "meaning": "みかん"},
+                    {"word": "watermelon", "meaning": "すいか"}
                 ]
     },
     {
                 "name": "Vegetables / 野菜",
                 "wordBook": [
-                {"word": "carrot", "meaning": "にんじん"},
-                {"word": "onion", "meaning": "たまねぎ"}
+                    {"word": "carrot", "meaning": "にんじん"},
+                    {"word": "onion", "meaning": "たまねぎ"},
+                    {"word": "cabbage", "meaning": "きゃべつ"},
+                    {"word": "potato", "meaning": "じゃがいも"}
                 ]
     },
     {
                 "name": "Sport / スポーツ",
                 "wordBook": [
-                {"word": "baseball", "meaning": "野球"},
-                {"word": "tennis", "meaning": "テニス"}
+                    {"word": "baseball", "meaning": "野球"},
+                    {"word": "tennis", "meaning": "テニス"},
+                    {"word": "soccer", "meaning": "サッカー"}
+                ]
+    },
+    {
+                "name": "県庁所在地",
+                "wordBook": [
+                    {"word": "北海道", "meaning": "札幌"},
+                    {"word": "青森県", "meaning": "青森"},
+                    {"word": "岩手県", "meaning": "盛岡"},
+                    {"word": "宮城県", "meaning": "仙台"},
+                    {"word": "秋田県", "meaning": "秋田"},
+                    {"word": "山形県", "meaning": "山形"},
+                    {"word": "福島県", "meaning": "福島"},
+                    {"word": "茨城県", "meaning": "水戸"},
+                    {"word": "栃木県", "meaning": "宇都宮"},
+                    {"word": "群馬県", "meaning": "前橋"},
+                    {"word": "埼玉県", "meaning": "さいたま"},
+                    {"word": "千葉県", "meaning": "千葉"},
+                    {"word": "東京都", "meaning": "東京"},
+                    {"word": "神奈川県", "meaning": "横浜"},
+                    {"word": "新潟県", "meaning": "新潟"},
+                    {"word": "富山県", "meaning": "富山"},
+                    {"word": "石川県", "meaning": "金沢"},
+                    {"word": "福井県", "meaning": "福井"},
+                    {"word": "山梨県", "meaning": "甲府"},
+                    {"word": "長野県", "meaning": "長野"},
+                    {"word": "岐阜県", "meaning": "岐阜"},
+                    {"word": "静岡県", "meaning": "静岡"},
+                    {"word": "愛知県", "meaning": "名古屋"},
+                    {"word": "三重県", "meaning": "津"},
+                    {"word": "滋賀県", "meaning": "大津"},
+                    {"word": "京都府", "meaning": "京都"},
+                    {"word": "大阪府", "meaning": "大阪"},
+                    {"word": "兵庫県", "meaning": "神戸"},
+                    {"word": "奈良県", "meaning": "奈良"},
+                    {"word": "和歌山県", "meaning": "和歌山"},
+                    {"word": "鳥取県", "meaning": "鳥取"},
+                    {"word": "島根県", "meaning": "松江"},
+                    {"word": "岡山県", "meaning": "岡山"},
+                    {"word": "広島県", "meaning": "広島"},
+                    {"word": "山口県", "meaning": "山口"},
+                    {"word": "徳島県", "meaning": "徳島"},
+                    {"word": "香川県", "meaning": "高松"},
+                    {"word": "愛媛県", "meaning": "松山"},
+                    {"word": "高知県", "meaning": "高知"},
+                    {"word": "福岡県", "meaning": "福岡"},
+                    {"word": "佐賀県", "meaning": "佐賀"},
+                    {"word": "長崎県", "meaning": "長崎"},
+                    {"word": "熊本県", "meaning": "熊本"},
+                    {"word": "大分県", "meaning": "大分"},
+                    {"word": "宮崎県", "meaning": "宮崎"},
+                    {"word": "鹿児島県", "meaning": "鹿児島"},
+                    {"word": "沖縄県", "meaning": "那覇"}
                 ]
     }
    ]
