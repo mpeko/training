@@ -1,105 +1,118 @@
-/*
-    単語帳　new
-*/
-
 @charset "utf-8";
 
 body{
-     font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
-     margin: 0;
-     padding: 0;
-}
-
-ul {
-  list-style-type: none;
-  margin-left: -20px;
-  padding-right: 20px;
-}
-
-li {
-    line-height: 20px;
-    margin: 10px 0 0;
-    padding: 0 0 10px;
-}
-
-.list {
-    font-size: small;
-}
-
-.list ul li {
-    border-bottom: 1px dashed #ddd;
+    font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
 }
 
 .clearfix:after {
-  clear: both;
-  display: block;
-  content: '';
+    clear: both;
+    display: block;
+    content: '';
 }
 
 .hide {
-  display: none;
+    display: none;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.list {
+    width: 100%;
+    margin: 30px 0 30px;
+}
+
+.list ul {
+    list-style-type: none;
+    margin-left: -20px;
+    padding-right: 20px;
+}
+
+.list ul li {
+    margin: 10px 0 0;
+    padding: 0 0 10px;
+    line-height: 20px;
+    border-bottom: 1px dashed #ddd;
 }
 
 .content {
     text-align: center;
 }
 
-.pankuzu p{
-    /*height: 15px;*/
-    font-size: small;
+.view {
+    width: 96%;
+    margin-right: auto;
+    margin-left : auto;
+    font-size: 70%;
 }
-
 
 #wrapper {
     width: 100%;
 }
 
+/* --------------------------------------------------
+btn
+-------------------------------------------------- */
 .btn {
-    margin-bottom: 30px;
-}
-
-.gray-btn {
+    padding: 5px 7px;
     margin-right: 5px;
-	background: #eee;
-    /*background: -moz-linear-gradient(top,#FFF 0%,#999);
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));*/
-	color: #333;
-	border: 1px solid #fff;
     -moz-border-radius: 5px;
 	-webkit-border-radius: 5px;    
 	-moz-box-shadow: 0px 0px 1px rgba(000,000,000,0.5);
 	-webkit-box-shadow: 0px 0px 1px rgba(000,000,000,0.5);
-    font-size: small;
+}
+
+.gray-btn {
+	background: #eee;
+	color: #333;
+	border: 1px solid #fff;
+}
+
+.white-btn {
+	background: #fff;
+	color: #4a9af0;
+	border: 1px solid #4a9af0;
 }
 
 .blue-btn {
-    margin-right: 5px;
 	background: #4a9af0;
 	color: #fff;
 	border: 1px solid #4a9af0;
-    -moz-border-radius: 5px;
-	-webkit-border-radius: 5px;    
-	-moz-box-shadow: 0px 0px 1px rgba(000,000,000,0.3);
-	-webkit-box-shadow: 0px 0px 1px rgba(000,000,000,0.3);
-    font-size: small;
 }
 
-.lesson-btn {
-    padding: 5px 7px;
-}
-
-.book-add-btn {
-    padding: 5px 7px;
+.orange-btn {
+    margin-top: 30px;
+	background: #ef6623;
+	color: #fff;
+	border: 1px solid #ef6623;
 }
 
 .edit-btn {
-    padding: 5px 7px;
+    padding: 5px 20px;
 }
 
+.back-btn {
+    margin-bottom: 20px;
+    padding: 2px 0 2px 8px;
+    width: 30px;
+}
 
+.trash-btn {
+    width: 15px;
+    margin: 0 14px -6px 0;
+}
 
+input[type="text"]{
+    margin:10px 10px 20px;
+}
 
-/*--------------------------------------------------*/
+/* --------------------------------------------------
+popup
+-------------------------------------------------- */
 
 .popup {
     position: absolute;
@@ -108,6 +121,7 @@ li {
 
     width: 100%;
     height: 100%;
+    font-size: 70%;
 }
 
 .popup .base {
@@ -130,28 +144,31 @@ li {
 	margin: auto;
     text-align: center;
     width: 200px;
-    height: 270px;
+    height: 200px;
     background-color: #fff;
     opacity: 1;
     color: #000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;   
 }
 
-/* --------------------------------------------------
-popup
--------------------------------------------------- */
-.popup .text-area {
+.popup .message-area {
     width: 200px;
-    height: 190px;
+    height: 100px;
     background-color: #999;
 }
 
-.popup .text {
-    margin: 20px 10px 0;
+.popup .message {
+    margin: 40px 10px 0;
+}
+
+.popup .message p {
+    font-size: 120%;
 }
 
 .popup .btn-group {
     position: absolute;
-	top: 230px;
+	top: 140px;
     left: 25px;
     width: 150px;
 }
@@ -174,9 +191,10 @@ header
     /*上下ボーダー*/
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
+    font-size: 80%;
 }
 
-.title {
+#header > .title {
     position: absolute;
 	top: 0;
 	right: 0;
@@ -189,38 +207,82 @@ header
 }
 
 /* --------------------------------------------------
-wordBooks
+pankuzu
 -------------------------------------------------- */
-.wordBooks {
-    width: 100%;
-    /*background-color: #999;*/
+.pankuzu p{
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 65%;
 }
 
-.list {
-    width: 100%;
-    margin-left: 0;
-}
+/* --------------------------------------------------
+wordBooks
+-------------------------------------------------- */
+
 
 /* --------------------------------------------------
 wordBook
 -------------------------------------------------- */
+.wordBook-view .bookName {
+    padding: 10px 0 10px;
+    line-height: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
 
 /* --------------------------------------------------
 lesson
 -------------------------------------------------- */
-
-.word-cardbox {
+.lesson-view .main {
+    margin: 30px auto 0;
+    text-align: center;
     width: 200px;
-    height: 80px;
-    background-color: #eee;
+    height: 250px;
 }
 
-.meaning-cardbox {
-    width: 200px;
-    height: 80px;
-    background-color: #ddd;
+.lesson-view .card-box {
+    display: table;
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
 }
 
-.top-cardBtn {
-    float: right;
+.lesson-view .card-base {
+    display: table-cell;
+    vertical-align: middle;
+    width: 200px;
+    height: 80px;
+}
+
+.lesson-view .card-text {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5px;
+    font-size: 120%;
+    line-height: 18px;
+}
+
+.lesson-view .answer-btn {
+    padding: 5px 5px 5px;
+    width: 30px;
+	height: 15px;
+    color: #4a9af0;
+    font-size: 150%;
+    font-weight: bold;
+	background: #fff;
+	border: 1px solid #4a9af0;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+    -moz-box-shadow: 0px 0px 1px rgba(000,000,000,0.3);
+	-webkit-box-shadow: 0px 0px 1px rgba(000,000,000,0.3);
+}
+
+.lesson-view .num-box span{
+    margin: 0 6px;
+}
+
+.lesson-view .btn-box {
+    margin-top:30px;
 }

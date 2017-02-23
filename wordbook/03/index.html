@@ -14,11 +14,12 @@
 
     <div id="wrapper">
         <script type="text/template" id="js-wordBooksMain-template">
-            <li><span class="js-lessonBtn gray-btn lesson-btn">学習</span> <%= name %></li>
+            <li><span class="js-lessonBtn btn white-btn">学習</span> <%= name %></li>
         </script>
 
         <script type="text/template" id="js-wordBooksEdit-template">
-            <li><input type="button" value="削除" class="js-deleteBtn"> <input type="button" value="編集" class="js-editBtn"> <%= name %></li>
+            <li><img src="images/trash.png" class="js-deleteBtn trash-btn"> <span class="js-editBtn btn white-btn">編集</span> <%= name %></li>
+            <!--<li><span class="js-deleteBtn btn white-btn">削除</span> <span class="js-editBtn btn white-btn">編集</span> <%= name %></li>-->
         </script>
 
         <script type="text/template" id="js-wordBookMain-template">
@@ -36,12 +37,12 @@
         </header>
         <!-- /header -->
 
-        <section class="wordBooks pankuzu js-pankuzu">
-            <p>単語帳一覧</p>
+        <section class="view pankuzu js-pankuzu">
+            <p></p>
         </section>
 
         <!-- 単語帳一覧 --> 
-        <section class="wordBooks js-wordBooksView">
+        <section class="view js-wordBooksView">
             
             <div class="js-wordBooksMain">
                 <div class="js-list list">
@@ -53,13 +54,13 @@
                         </li>
                     </ul>-->
                 </div>
-                <span class="js-wordBooksAddBtn blue-btn book-add-btn">単語帳追加</span>
-                <span class="js-editModeBtn blue-btn edit-btn">編集</span>
+                <span class="js-wordBooksAddBtn btn blue-btn">単語帳追加</span>
+                <span class="js-editModeBtn btn blue-btn edit-btn">編集</span>
             </div>
 
             <!-- 単語帳一覧 編集-->
             <div class="js-wordBooksEdit">
-                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="js-list list">
                     <ul id="js-showWordBooksEdit-template"></ul>
                     <!--<ul>
@@ -73,10 +74,10 @@
             </div>
 
             <div class="js-wordBooksAdd">
-                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="content">
-                    <p>単語帳名<input type="text" size="30" class="js-bookNameTxt"></p>
-                    <input type="button" value="単語帳を登録" class="js-addBtn">
+                    <p>単語帳名<input type="text" size="24" class="js-bookNameTxt"></p>
+                    <span class="js-addBtn btn orange-btn">単語帳を登録</span>
                 </div>
                 <p class="js-errorMsg"></p>
             </div>
@@ -85,12 +86,12 @@
         <!-- / 単語帳一覧 -->
 
         <!-- 単語帳編集 --> 
-        <section class="wordBooks js-wordBookView">
+        <section class="view wordBook-view js-wordBookView">
 
             <div class="js-wordBookMain">
-                <input type="button" value="< 戻る" class="js-mainBackBtn btn">
-                <div class="js-title">
-                    <input type="button" value="編集" class="js-editBtn">
+                <div class="js-mainBackBtn back-btn btn gray-btn">戻る</div>
+                <div class="js-bookName bookName">
+                    <span class="js-editBtn btn white-btn">編集</span>
                     <span class="js-name"><span>
                 </div>
                 <div class="js-list list">
@@ -103,34 +104,34 @@
                         </li>
                     </ul>-->
                 </div>
-                <input type="button" value="単語追加" class="js-mainAddBtn btn">
+                <span class="js-mainAddBtn btn blue-btn">単語追加</span>
             </div>
 
             <div class="js-wordBookNameUpdate">
-                <input type="button" value="< 戻る" class="js-backBtn btn">
-                    <div>
-                        単語帳名 <input type="text" size="20" class="js-updateNameTxt">
-                        <input type="button" value="更新" class="js-updateBtn">
-                    </div>
-                    <p class="js-errorMsg"></p>
+                <div class="js-backBtn back-btn btn gray-btn">戻る</div>
+                <div>
+                    単語帳名<input type="text" size="24" class="js-updateNameTxt">
+                    <span class="js-updateBtn btn orange-btn">更新</span>
+                </div>
+                <p class="js-errorMsg"></p>
             </div>
 
             <div class="js-wordBookUpdate">
-                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="content">
                     <p>
-                        単語 <input type="text" size="30" class="js-updateWordTxt">
+                        単語<input type="text" size="24" class="js-updateWordTxt">
                     </p>
                     <p>
-                        意味 <input type="text" size="30" class="js-updateMeaningTxt">
+                        意味<input type="text" size="24" class="js-updateMeaningTxt">
                     </p>
                     <p class="js-errorMsg"></p>
-                    <input type="button" value="更新" class="js-updateBtn">
+                    <span class="js-updateBtn btn orange-btn">更新</span>
                 </div>
             </div>
 
             <div class="js-wordBookAdd">
-                <input type="button" value="< 戻る" class="js-backBtn btn">
+                <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="content">
                     <p>
                         単語 <input type="text" size="30" class="js-wordTxt">
@@ -139,7 +140,7 @@
                         意味 <input type="text" size="30" class="js-meaningTxt">
                     </p>
                     <p class="js-errorMsg"></p>
-                    <input type="button" value="単語を登録" class="js-addBtn">
+                    <span class="js-addBtn btn orange-btn">単語を登録</span>
                 </div>
             </div>
 
@@ -148,47 +149,77 @@
 
 
         <!-- 学習 --> 
-        <section class="wordBooks js-lessonView">
-            <input type="button" value="< 単語帳一覧" class="js-backBtn">
-            <p class="js-wordbookName"></p>
-            <div align="center">
+        <section class="view lesson-view js-lessonView">
+            <span class="js-backBtn btn gray-btn">一覧へ戻る</span>
+
+            <div class="main">
+                <p class="js-wordbookName"></p>
+
                 <div class="js-cards">
-                    <div class="js-wordCardBox word-cardbox">
-                        <span class="js-wordCardText"></span>
+                    <div class="card-box">
+                        <div class="js-wordCardBox card-base">
+                            <p class="js-wordCardText card-text"></p>
+                        </div>
                     </div>
-                    <div class="js-meaningCardBox meaning-cardbox">
-                        <input type="button" value="答えを見る" class="js-answerBtn">
-                        <span class="js-meaningCardText"></span>
+                    <div class="card-box">
+                        <div class="js-meaningCardBox card-base">
+                            <p class="js-answerBtn answer-btn card-text">?</p>
+                            <p class="js-meaningCardText card-text"></p>
+                        </div>
                     </div>
+
                 </div>
-                <div style="margin: 10px;">
-                    <input type="button" value="< 戻る" class="js-prevBtn">
-                    <input type="button" value="進む >" class="js-nextBtn">
+
+                <div class="btn-box">
+                    <span class="js-prevBtn btn white-btn">＜</span>
+                    <span class="num-box"><span class="js-currentNum"></span>/<span class="js-totalNum"></span></span>  
+                    <span class="js-nextBtn btn white-btn">＞</span>
                 </div>
-                <div><span class="js-currentNum"></span> / <span class="js-totalNum"></span></div>
             </div>
-            <div>
-                <input type="button" value="ランダム" class="js-randomBtn">
-                <input type="button" value="出題と答えを逆にする" class="js-reverseBtn">
+
+            <div class="btn-box">
+                <span class="js-randomBtn btn blue-btn">ランダム</span>
+                <span class="js-reverseBtn btn blue-btn">出題と答えを逆にする</span>
+                <span class="js-replayBtn btn blue-btn">最初に戻る</span>
             </div>
-            <input type="button" value="最初から始める" class="js-topCardBtn top-cardBtn">
+
+            
         </section>
         <!-- / 学習 -->
 
-        <!--<div class="popup">
+        <div class="popup js-wordbooksDeletePopup">
             <div class="base"></div>
             <div class="popup-content">
-                <div class="text-area">
-                    <div class="js-text text">
-                        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                <div class="messages-area">
+                    <div class="message">
+                        単語帳
+                        <p class="js-bookName"></p>
+                        削除しますか？
                     </div>
                 </div>
                 <div class="js-btnGroup btn-group">
-                    <input type="button" value="aaa" class="js-aaaBtn">
-                    <input type="button" value="bbb" class="js-bbbBtn">
+                    <span class="js-closeBtn btn blue-btn">戻る</span>
+                    <span class="js-deleteBtn btn orange-btn">削除</span>
                 </div>
             </div>
-        </div>-->
+        </div>
+
+        <div class="popup js-wordbookDeletePopup">
+            <div class="base"></div>
+            <div class="popup-content">
+                <div class="messages-area">
+                    <div class="message">
+                        単語
+                        <p class="js-word"></p>
+                        削除しますか？
+                    </div>
+                </div>
+                <div class="js-btnGroup btn-group">
+                    <span class="js-closeBtn btn blue-btn">戻る</span>
+                    <span class="js-deleteBtn btn blue-btn">削除</span>
+                </div>
+            </div>
+        </div>
     
     </div>
 </body>
