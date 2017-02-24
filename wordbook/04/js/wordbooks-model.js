@@ -53,11 +53,11 @@ var wordBookObj = {
         this.currentEditBook.wordBook[this.updateWordIndex].meaning = text2;
         this.setLocal();
     },
-    // 練習単語index set
+    // 学習単語index set
     setLessonWordIndex: function(index){
         this.lessonWordIndex = index;
     },
-    // 練習単語index get
+    // 学習単語index get
     getLessonWordIndex: function(){
         return this.lessonWordIndex;
     },
