@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+
+
+@keyframes fadeOut {
+    0%{
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+        
+	}
+}
+
+@-webkit-keyframes fadeOut {
+    0%{
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.test {
+    animation: fadeOut 3s linear 0s 1;
+    -webkit-animation: fadeOut 3s linear 0s 1;  
+}
+
