@@ -108,8 +108,8 @@
 
             <div class="js-wordBookNameUpdate">
                 <div class="js-backBtn back-btn btn gray-btn">戻る</div>
-                <div>
-                    単語帳名<input type="text" size="24" class="js-updateNameTxt">
+                <div class="content">
+                    <p>単語帳名<input type="text" size="24" class="js-updateNameTxt"></p>
                     <span class="js-updateBtn btn orange-btn">更新</span>
                 </div>
                 <p class="js-errorMsg"></p>
@@ -118,12 +118,8 @@
             <div class="js-wordBookUpdate">
                 <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="content">
-                    <p>
-                        単語<input type="text" size="24" class="js-updateWordTxt">
-                    </p>
-                    <p>
-                        意味<input type="text" size="24" class="js-updateMeaningTxt">
-                    </p>
+                    <p>単語<input type="text" size="24" class="js-updateWordTxt"></p>
+                    <p>意味<input type="text" size="24" class="js-updateMeaningTxt"></p>
                     <p class="js-errorMsg"></p>
                     <span class="js-updateBtn btn orange-btn">更新</span>
                 </div>
@@ -132,12 +128,8 @@
             <div class="js-wordBookAdd">
                 <div class="js-backBtn back-btn btn gray-btn">戻る</div>
                 <div class="content">
-                    <p>
-                        単語 <input type="text" size="30" class="js-wordTxt">
-                    </p>
-                    <p>
-                        意味 <input type="text" size="30" class="js-meaningTxt">
-                    </p>
+                    <p>単語 <input type="text" size="30" class="js-wordTxt"></p>
+                    <p>意味 <input type="text" size="30" class="js-meaningTxt"></p>
                     <p class="js-errorMsg"></p>
                     <span class="js-addBtn btn orange-btn">単語を登録</span>
                 </div>
@@ -187,6 +179,42 @@
             
         </section>
         <!-- / 学習 -->
+
+        <!-- popup -->
+        <div class="popup js-wordbooksDeletePopup">
+            <div class="base"></div>
+            <div class="popup-content">
+                <div class="messages-area">
+                    <div class="message">
+                        単語帳
+                        <p class="js-bookName"></p>
+                        削除しますか？
+                    </div>
+                </div>
+                <div class="js-btnGroup btn-group">
+                    <span class="js-closeBtn btn white-blue-btn">戻る</span>
+                    <span class="js-deleteBtn btn white-orange-btn">削除</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup js-wordbookDeletePopup">
+            <div class="base"></div>
+            <div class="popup-content">
+                <div class="messages-area">
+                    <div class="message">
+                        単語
+                        <p class="js-word"></p>
+                        削除しますか？
+                    </div>
+                </div>
+                <div class="js-btnGroup btn-group">
+                    <span class="js-closeBtn btn white-blue-btn">戻る</span>
+                    <span class="js-deleteBtn btn white-orange-btn">削除</span>
+                </div>
+            </div>
+        </div>
+        <!-- / popup -->
 
         <!-- start-view -->
         <div class="start-view js-startView">

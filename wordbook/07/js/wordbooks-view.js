@@ -26,6 +26,7 @@ $(function(){
         $wordBooksMain: $('.js-wordBooksView').find('.js-wordBooksMain'),
         $wordBooksEdit: $('.js-wordBooksView').find('.js-wordBooksEdit'),
         $wordBooksAdd: $('.js-wordBooksView').find('.js-wordBooksAdd'),
+        $wordbooksDeletePopup: $('.js-wordbooksDeletePopup'),
         deleteIndex: null,
         initialize: function() {
 
@@ -47,6 +48,7 @@ $(function(){
 
                 self.$wordBooksEdit.addClass('hide');
                 self.$wordBooksAdd.addClass('hide');
+                self.$wordbooksDeletePopup.addClass('hide');
 
                 self.displayMainTemplate();
                 self.displayEditTemplate();
@@ -59,10 +61,9 @@ $(function(){
             var $wordBooksAddBtn = this.$root.find('.js-wordBooksAddBtn');
             var $addBtn = this.$root.find('.js-addBtn');
             var $editModeBtn = this.$root.find('.js-editModeBtn');
-            var $editBtn = this.$root.find('.js-editBtn');
-            var $deleteBtn = this.$root.find('.js-wordBooksEdit .js-deleteBtn');
-            var $lessonBtn = this.$root.find('.js-lessonBtn');
             var $backBtn = this.$root.find('.js-backBtn');
+            var $popupCloseBtn = this.$wordbooksDeletePopup.find('.js-closeBtn');
+            var $popupDeleteBtn = this.$wordbooksDeletePopup.find('.js-deleteBtn');
             var self = this;
             
             $wordBooksAddBtn.on(touch,function(){
@@ -87,6 +88,28 @@ $(function(){
                 updateHeaderText('単語帳一覧編集');
                 updatePankuzu('単語帳一覧 > 単語帳一覧編集');
             });
+            $backBtn.on(touch,function(){
+                // 共通・戻る
+                self.resetToMain();
+                updateHeaderText('単語帳一覧');
+                updatePankuzu('単語帳一覧');
+            });
+            $popupCloseBtn.on(touch,function(){
+                self.$wordbooksDeletePopup.addClass('hide');
+                self.$root.removeClass('hide');
+            });
+            $popupDeleteBtn.on(touch,function(){
+                self.delete(self.deleteIndex);
+                self.$wordbooksDeletePopup.addClass('hide');
+                self.$root.removeClass('hide');
+            });
+            this.addHandleEvent();
+        },
+        addHandleEvent: function() {
+            var $editBtn = this.$root.find('.js-editBtn');//
+            var $deleteBtn = this.$root.find('.js-wordBooksEdit .js-deleteBtn');//
+            var $lessonBtn = this.$root.find('.js-lessonBtn');//
+            var self = this;
             $editBtn.on(touch,function(){
 
                 // 選択した単語帳編集一覧へ
@@ -106,7 +129,10 @@ $(function(){
             });
             $deleteBtn.on(touch,function(){
                 self.deleteIndex = $deleteBtn.index(this);
-                self.delete(self.deleteIndex);
+                var bookName = setTextLength(wordBookObj.wordBooks[self.deleteIndex].name, 16);
+                self.$wordbooksDeletePopup.find('.js-bookName').text(bookName);
+                self.$wordbooksDeletePopup.removeClass('hide');
+                self.$root.addClass('hide');
             });
             $lessonBtn.on(touch,function(){
                 // 学習画面へ
@@ -120,12 +146,14 @@ $(function(){
                 lessonView.show(index);
                 self.$root.addClass('hide');
             });
-            $backBtn.on(touch,function(){
-                // 共通・戻る
-                self.resetToMain();
-                updateHeaderText('単語帳一覧');
-                updatePankuzu('単語帳一覧');
-            });
+        },
+        removeHandleEvent: function() {
+            var $editBtn = this.$root.find('.js-editBtn');
+            var $deleteBtn = this.$root.find('.js-wordBooksEdit .js-deleteBtn');
+            var $lessonBtn = this.$root.find('.js-lessonBtn');
+            $editBtn.off(touch);
+            $deleteBtn.off(touch);
+            $lessonBtn.off(touch);
         },
         displayMainTemplate: function() {
             // 単語帳一覧 
@@ -177,6 +205,8 @@ $(function(){
             this.displayEditTemplate();
 
             this.resetToMain();
+            this.removeHandleEvent();
+            this.addHandleEvent();
 
             updatePankuzu('単語帳一覧');
             updateHeaderText('単語帳一覧');
@@ -191,8 +221,9 @@ $(function(){
 
             this.displayMainTemplate();
             this.displayEditTemplate();
-            
-            this.resetBtn();
+
+            this.removeHandleEvent();
+            this.addHandleEvent();
 
             updatePankuzu('');
             updateHeaderText('単語帳一覧');
@@ -209,12 +240,7 @@ $(function(){
             this.$wordBooksMain.removeClass('hide');
             this.$wordBooksEdit.addClass('hide');
             this.$wordBooksAdd.addClass('hide');
-            this.resetBtn();
             this.resetErrorMsg();
-        },
-        resetBtn: function() {
-            // 配列を操作したときなどにボタンが効かなくなるので再度設定
-            this.handleEvent();
         },
         resetErrorMsg: function() {
             this.$root.find('.js-errorMsg').text('');
@@ -241,17 +267,17 @@ $(function(){
             this.$wordBookUpdate.addClass('hide');
             this.$wordBookAdd.addClass('hide');
             this.$wordbookDeletePopup.addClass('hide');
+
+            this.handleEvent();
 	    },
         handleEvent: function() {
             var $mainAddBtn = this.$root.find('.js-mainAddBtn');
             var $bookNameUpdateBtn = this.$wordBookNameUpdate.find('.js-updateBtn');
             var $bookUpdateBtn = this.$wordBookUpdate.find('.js-updateBtn');
-            var $addBtn = this.$wordBookAdd.find('.js-addBtn');
             var $mainBackBtn = this.$root.find('.js-mainBackBtn');
-            var $bookNameEditBtn = this.$root.find('.js-bookName .js-editBtn');
-            var $wordEditBtn = this.$root.find('.js-wordBookMain .js-list .js-editBtn');
-            var $wordDeleteBtn = this.$root.find('.js-wordBookMain .js-list .js-deleteBtn');
             var $backBtn = this.$root.find('.js-backBtn');
+            var $popupCloseBtn = this.$wordbookDeletePopup.find('.js-closeBtn');
+            var $popupDeleteBtn = this.$wordbookDeletePopup.find('.js-deleteBtn');
             var self = this;
             $mainAddBtn.on(touch,function(){
                 // 単語追加画面へ
@@ -302,6 +328,35 @@ $(function(){
                 
                 self.resetToMain();
             });
+            $mainBackBtn.on(touch,function(){
+                // 戻る
+                self.$root.addClass('hide');
+                $('.js-wordBooksView').removeClass('hide');
+
+                updateHeaderText('単語帳一覧編集');
+                updatePankuzu('単語帳一覧 > 単語帳一覧編集');
+            });
+            $backBtn.on(touch,function(){
+                // 共通・戻る
+                self.resetToMain();
+            });
+            $popupCloseBtn.on(touch,function(){
+                self.$wordbookDeletePopup.addClass('hide');
+                self.$root.removeClass('hide');
+            });
+            $popupDeleteBtn.on(touch,function(){
+                self.delete(self.deleteIndex);
+                self.$wordbookDeletePopup.addClass('hide');
+                self.$root.removeClass('hide');
+            });
+            this.addHandleEvent();
+        },
+        addHandleEvent: function() {
+            var $addBtn = this.$wordBookAdd.find('.js-addBtn');
+            var $bookNameEditBtn = this.$root.find('.js-bookName .js-editBtn');
+            var $wordEditBtn = this.$root.find('.js-wordBookMain .js-list .js-editBtn');
+            var $wordDeleteBtn = this.$root.find('.js-wordBookMain .js-list .js-deleteBtn');
+            var self = this;
             $addBtn.on(touch,function(){
                 // 単語を登録
                 var word = self.$wordBookAdd.find('.js-wordTxt').val();
@@ -332,20 +387,20 @@ $(function(){
                 // 単語の削除
                 self.deleteIndex = $wordDeleteBtn.index(this);
                 var text = setTextLength(wordBookObj.currentEditBook.wordBook[wordBookView.deleteIndex].word, 16);
-                self.delete(self.deleteIndex);
-            });
-            $mainBackBtn.on(touch,function(){
-                // 戻る
+                self.$wordbookDeletePopup.find('.js-word').text(text);
+                self.$wordbookDeletePopup.removeClass('hide');
                 self.$root.addClass('hide');
-                $('.js-wordBooksView').removeClass('hide');
-
-                updateHeaderText('単語帳一覧編集');
-                updatePankuzu('単語帳一覧 > 単語帳一覧編集');
             });
-            $backBtn.on(touch,function(){
-                // 共通・戻る
-                self.resetToMain();
-            });
+        },
+        removeHandleEvent: function() {
+            var $addBtn = this.$wordBookAdd.find('.js-addBtn');
+            var $bookNameEditBtn = this.$root.find('.js-bookName .js-editBtn');
+            var $wordEditBtn = this.$root.find('.js-wordBookMain .js-list .js-editBtn');
+            var $wordDeleteBtn = this.$root.find('.js-wordBookMain .js-list .js-deleteBtn');
+            $addBtn.off(touch);
+            $bookNameEditBtn.off(touch);
+            $wordEditBtn.off(touch);
+            $wordDeleteBtn.off(touch);
         },
         displayTemplate: function() {
             // テンプレートの出力
@@ -363,7 +418,9 @@ $(function(){
                 // テンプレート適用
                 $("#js-showWordBookMain-template").html(compiled);
             });
-            this.handleEvent();
+
+            this.removeHandleEvent();
+            this.addHandleEvent();
         },
         editBookName: function() {
             //  単語帳名の編集
@@ -597,6 +654,20 @@ $(function(){
             var disabled = checkClass.indexOf('disabled');
             return disabled;
         }
+    }
+
+    //-------------------------------------------------------------------------
+    // タイトル
+    //-------------------------------------------------------------------------
+    var updateHeaderText = function(text){
+        $('#header .title').text(text);
+    }
+
+    //-------------------------------------------------------------------------
+    // パンくずリスト TODO : 
+    //-------------------------------------------------------------------------
+    var updatePankuzu = function(text){
+        $('.js-pankuzu p').text(text);
     }
 
     startView.initialize();

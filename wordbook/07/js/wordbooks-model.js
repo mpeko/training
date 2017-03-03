@@ -21,9 +21,6 @@
     },
     // 単語帳の削除
     deleteBook: function(index){
-
-    console.log(index);
-    console.log(this.wordBooks);
        this.wordBooks.splice(index,1);
        this.setLocal();
     },
@@ -77,11 +74,11 @@
         return flag;
     },
     setLocal: function(){
-        localStorage.setItem('wordbook', JSON.stringify(this.wordBooks));
+        localStorage.setItem('wordbooks', JSON.stringify(this.wordBooks));
     },
     getLocal: function(){
-        if (localStorage.getItem('wordbook') != null){
-            this.wordBooks = JSON.parse(localStorage.getItem('wordbook'));
+        if (localStorage.getItem('wordbooks') != null){
+            this.wordBooks = JSON.parse(localStorage.getItem('wordbooks'));
         }
     }
 }
